@@ -1,6 +1,7 @@
 import Foundation
 import SwiftData
 
+
 @Model
 final class CBLProject {
     var id: UUID = UUID()
@@ -24,7 +25,13 @@ final class CBLStep {
     var id: UUID = UUID()
     var type: String = "" // e.g. "bigIdea", "essentialQuestion"
     var content: String = ""
-    var aiFeedback: String = ""
+    
+    // Structured Feedback
+    var aiInsight: String = ""
+    var aiChallenge: String = ""
+    var aiGuidingQuestions: [String] = []
+    var aiSuggestion: String = ""
+    
     var evaluationScore: Double = 0.0 // 0.0 to 1.0 (70% required to pass)
     var isCompleted: Bool = false
     var order: Int = 0
@@ -39,9 +46,9 @@ final class CBLStep {
     
     static func createDefaultSteps() -> [CBLStep] {
         let definition: [(String, Int)] = [
-            ("bigIdea", 50), ("essentialQuestion", 50), ("challenge", 100), 
-            ("guidingQuestions", 75), ("activities", 75), ("resources", 50), 
-            ("synthesis", 150), ("solution", 200), ("implementation", 150), ("reflection", 100)
+            ("Big Idea", 50), ("Essential Question", 50), ("Challenge", 100), 
+            ("Guiding Questions", 75), ("Guiding Activities", 75), ("Guiding Resources", 50), 
+            ("Synthesis", 150), ("Solution Concept", 200), ("Implementation", 150), ("Reflection", 100)
         ]
         return definition.enumerated().map { index, def in
             CBLStep(type: def.0, order: index, xpValue: def.1)

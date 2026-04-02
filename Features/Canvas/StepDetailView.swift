@@ -11,7 +11,7 @@ struct StepDetailView: View {
     @State private var isAnalyzing = false
     @State private var showingFeedback = false
     @State private var currentScore: Double = 0.0
-    @State private var aiFeedback: String = ""
+    @State private var currentFeedback = StepFeedback()
     
     var body: some View {
         GeometryReader { geo in
@@ -20,7 +20,7 @@ struct StepDetailView: View {
                     .frame(width: geo.size.width, height: geo.size.height)
                     .clipped()
                 
-                VStack(spacing: 24) {
+                VStack(spacing: 12) { // Stable layout spacing
                     // Header Area
                     header
                     
@@ -38,10 +38,13 @@ struct StepDetailView: View {
                 }
                 .padding(.horizontal, 24)
             }
+            .onTapGesture {
+                hideKeyboard()
+            }
             .frame(width: geo.size.width, height: geo.size.height)
             .clipped()
-            .navigationBarBackButtonHidden()
         }
+        .navigationBarBackButtonHidden()
     }
     
     private var header: some View {
@@ -125,19 +128,54 @@ struct StepDetailView: View {
             .accessibilityValue("\(Int(currentScore * 100)) percent")
             
             // AI Feedback Card
-            GlassCard {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text(currentScore >= 0.7 ? "PASSING GRADE" : "EVOLUTION REQUIRED")
-                        .font(SparkTheme.Typography.micro)
-                        .foregroundColor(scoreColor)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    feedbackSection(title: "INSIGHT", content: currentFeedback.insight, icon: "eye.fill", color: SparkTheme.Colors.xpElectric)
+                    feedbackSection(title: "CHALLENGE", content: currentFeedback.challenge, icon: "bolt.fill", color: SparkTheme.Colors.streakFlame)
                     
-                    Text(aiFeedback)
-                        .font(SparkTheme.Typography.body)
-                        .foregroundColor(.white.opacity(0.8))
+                    if !currentFeedback.guidingQuestions.isEmpty {
+                        GlassCard {
+                            VStack(alignment: .leading, spacing: 12) {
+                                HStack {
+                                    Image(systemName: "questionmark.circle.fill")
+                                    Text("GUIDING QUESTIONS")
+                                        .font(SparkTheme.Typography.micro)
+                                }
+                                .foregroundColor(SparkTheme.Colors.levelGold)
+                                
+                                ForEach(currentFeedback.guidingQuestions, id: \.self) { question in
+                                    Text("• \(question)")
+                                        .font(SparkTheme.Typography.body)
+                                        .foregroundColor(.white.opacity(0.8))
+                                        .padding(.leading, 8)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                }
+                            }
+                        }
+                    }
+                    
+                    if let suggestion = currentFeedback.suggestion {
+                        feedbackSection(title: "SUGGESTION", content: suggestion, icon: "lightbulb.fill", color: SparkTheme.Colors.act)
+                    }
                 }
-                .accessibilityElement(children: .combine)
-                .accessibilityLabel("AI Feedback")
-                .accessibilityValue(aiFeedback)
+                .padding(.bottom, 20)
+            }
+        }
+    }
+    
+    private func feedbackSection(title: String, content: String, icon: String, color: Color) -> some View {
+        GlassCard {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Image(systemName: icon)
+                    Text(title)
+                        .font(SparkTheme.Typography.micro)
+                }
+                .foregroundColor(color)
+                
+                Text(content)
+                    .font(SparkTheme.Typography.body)
+                    .foregroundColor(.white.opacity(0.9))
             }
         }
     }
@@ -192,13 +230,14 @@ struct StepDetailView: View {
     
     private func triggerEvaluation() {
         isAnalyzing = true
+        let previous = step.content.isEmpty ? nil : step.content
         Task {
-            let result = await AIService.shared.evaluateStep(content: inputContent, type: step.type)
+            let result = await AIService.shared.evaluateStep(content: inputContent, type: step.type, previousContent: previous)
             await MainActor.run {
                 withAnimation {
                     isAnalyzing = false
                     currentScore = result.0
-                    aiFeedback = result.1
+                    currentFeedback = result.1
                     showingFeedback = true
                 }
             }
@@ -208,7 +247,10 @@ struct StepDetailView: View {
     private func finalizeCompletion() {
         step.isCompleted = true
         step.evaluationScore = currentScore
-        step.aiFeedback = aiFeedback
+        step.aiInsight = currentFeedback.insight
+        step.aiChallenge = currentFeedback.challenge
+        step.aiGuidingQuestions = currentFeedback.guidingQuestions
+        step.aiSuggestion = currentFeedback.suggestion ?? ""
         step.content = inputContent
         
         let stats = stats.first ?? UserStats()

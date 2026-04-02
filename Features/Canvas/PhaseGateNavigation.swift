@@ -100,7 +100,7 @@ struct PhaseGateNavigation: View {
                 
                 // Floating Custom Back Button
                 Button(action: {
-                    HapticManager.shared.triggerImpact(.light)
+                    HapticManager.shared.triggerImpact(0) // 0 for light
                     dismiss()
                 }) {
                     Image(systemName: "chevron.left")

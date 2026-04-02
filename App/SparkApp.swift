@@ -19,11 +19,20 @@ struct SparkApp: App {
         }
     }()
     
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            DashboardView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .clipped()
+            Group {
+                if hasCompletedOnboarding {
+                    DashboardView()
+                } else {
+                    OnboardingView()
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .clipped()
+            .preferredColorScheme(.dark)
         }
         .modelContainer(sharedModelContainer)
     }

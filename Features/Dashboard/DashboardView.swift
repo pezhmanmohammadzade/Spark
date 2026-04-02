@@ -24,6 +24,16 @@ struct DashboardView: View {
     
     @State private var navigatedProject: CBLProject? // Programmatic navigation trigger
     
+    private var totalInsights: Int {
+        projects.flatMap { $0.steps }.filter { !$0.aiInsight.isEmpty }.count
+    }
+    
+    private var totalTargetsMET: Int {
+        projects.filter { project in
+            project.steps.contains { $0.type == "Solution Concept" && $0.isCompleted }
+        }.count
+    }
+    
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
@@ -88,12 +98,24 @@ struct DashboardView: View {
                                     StreakCard(streak: currentUserStats.dailyStreak)
                                         .accessibilityLabel("\(currentUserStats.dailyStreak) Day Streak")
                                     
-                                    BentoStatCard(title: "Insights", value: "8", icon: "brain.head.profile", color: .purple)
-                                        .accessibilityLabel("8 Strategic Insights found")
+                                    AdvancedStatCard(
+                                        title: "Insights",
+                                        value: "\(totalInsights)",
+                                        icon: "brain.head.profile",
+                                        color: .purple,
+                                        trend: totalInsights > 0 ? "LIVE" : nil
+                                    )
+                                    .accessibilityLabel("\(totalInsights) Strategic Insights found")
                                     
-                                    BentoStatCard(title: "Target", value: "3", icon: "target", color: .green)
-                                        .gridCellColumns(2)
-                                        .accessibilityLabel("3 Missions in progress")
+                                    AdvancedStatCard(
+                                        title: "Target MET",
+                                        value: "\(totalTargetsMET)",
+                                        icon: "target",
+                                        color: .green,
+                                        trend: projects.count > 0 ? "\(Int(Double(totalTargetsMET)/Double(max(projects.count, 1)) * 100))%" : nil
+                                    )
+                                    .gridCellColumns(2)
+                                    .accessibilityLabel("\(totalTargetsMET) Solutions validated")
                                 }
                                 
                                 Spacer(minLength: 140)
@@ -111,6 +133,9 @@ struct DashboardView: View {
                             .padding(.bottom, 10)
                             .frame(width: geo.size.width) // Constraint check
                     }
+                }
+                .onTapGesture {
+                    hideKeyboard()
                 }
                 .frame(width: geo.size.width, height: geo.size.height)
                 .clipped() // Hard-Lock everything inside
@@ -192,33 +217,6 @@ struct HeroBentoCard: View {
     }
 }
 
-struct BentoStatCard: View {
-    let title: String
-    let value: String
-    let icon: String
-    let color: Color
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Image(systemName: icon)
-                .font(.title3)
-                .foregroundColor(color)
-            
-            VStack(alignment: .leading, spacing: 2) {
-                Text(value)
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(.white)
-                Text(title.uppercased())
-                    .font(SparkTheme.Typography.micro)
-                    .foregroundColor(.white.opacity(0.4))
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .bentoStyle()
-    }
-}
-
 struct NewProjectBento: View {
     @Environment(\.modelContext) private var modelContext
     
@@ -295,7 +293,7 @@ struct IdeaSparkBox: View {
     
     private func sparkMission() {
         isSparking = true
-        HapticManager.shared.triggerImpact(.medium)
+        HapticManager.shared.triggerImpact(1) // 1 for medium
         
         Task {
             let result = await AIService.shared.structureMission(rawInput: rawIdea)

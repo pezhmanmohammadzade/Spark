@@ -10,24 +10,24 @@ struct SparkBackground: View {
                 .fill(SparkTheme.Gradients.mainBackground)
                 .ignoresSafeArea()
             
-            // Floating Mesh Circles (Strictly centered and clipped)
+            // Floating Mesh Circles (Anchored to screen, avoiding keyboard resizing)
             GeometryReader { geo in
                 ZStack {
                     Circle()
                         .fill(Color.blue.opacity(0.3))
-                        .frame(width: geo.size.width * 1.5)
+                        .frame(width: max(geo.size.width, geo.size.height) * 1.5)
                         .blur(radius: 60)
                         .offset(x: animate ? -50 : 50, y: animate ? -100 : 100)
                     
                     Circle()
                         .fill(Color.purple.opacity(0.2))
-                        .frame(width: geo.size.width * 1.2)
+                        .frame(width: max(geo.size.width, geo.size.height) * 1.2)
                         .blur(radius: 80)
                         .offset(x: animate ? 50 : -50, y: animate ? 100 : -100)
                 }
-                .frame(width: geo.size.width, height: geo.size.height)
-                .clipped() // Hard-Lock to parent geometry
+                .position(x: geo.size.width / 2, y: geo.size.height / 2)
             }
+            .ignoresSafeArea(.all) // FIXED: Background doesn't shrink when keyboard appears
             .allowsHitTesting(false)
             
             // Texture Grain

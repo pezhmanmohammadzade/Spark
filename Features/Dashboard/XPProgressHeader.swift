@@ -19,7 +19,7 @@ struct XPProgressHeader: View {
             
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    Text("Level \(stats.level)")
+                    Text(stats.levelTitle)
                         .font(SparkTheme.Typography.cardHeader)
                         .foregroundColor(.white)
                     Spacer()

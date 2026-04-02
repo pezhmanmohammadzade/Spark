@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#endif
 
 enum SparkTheme {
     enum Colors {
@@ -61,27 +64,40 @@ extension View {
             )
             .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
     }
+    
+    func hideKeyboard() {
+        #if canImport(UIKit)
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        #endif
+    }
 }
 
 // Lightweight Haptic Utility
 class HapticManager {
     @MainActor static let shared = HapticManager()
     
-    @MainActor func triggerImpact(_ style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {
-        let generator = UIImpactFeedbackGenerator(style: style)
+    @MainActor func triggerImpact(_ style: Int = 0) { // Default param simplified for multiplatform
+        #if canImport(UIKit)
+        let styles: [UIImpactFeedbackGenerator.FeedbackStyle] = [.light, .medium, .heavy, .soft, .rigid]
+        let generator = UIImpactFeedbackGenerator(style: styles[min(max(style, 0), 4)])
         generator.prepare()
         generator.impactOccurred()
+        #endif
     }
     
     @MainActor func triggerSelection() {
+        #if canImport(UIKit)
         let generator = UISelectionFeedbackGenerator()
         generator.prepare()
         generator.selectionChanged()
+        #endif
     }
     
     @MainActor func triggerSuccess() {
+        #if canImport(UIKit)
         let generator = UINotificationFeedbackGenerator()
         generator.prepare()
         generator.notificationOccurred(.success)
+        #endif
     }
 }
