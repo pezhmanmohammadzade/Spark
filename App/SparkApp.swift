@@ -19,19 +19,23 @@ struct SparkApp: App {
         }
     }()
     
-    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
+    @State private var isSplashScreenFinished: Bool = false
     
     var body: some Scene {
         WindowGroup {
-            Group {
-                if hasCompletedOnboarding {
-                    DashboardView()
-                } else {
-                    OnboardingView()
+            ZStack {
+                DashboardView()
+                
+                if !isSplashScreenFinished {
+                    SparkSplashScreenView(onFinished: {
+                        withAnimation {
+                            isSplashScreenFinished = true
+                        }
+                    })
+                    .transition(.opacity)
+                    .zIndex(1)
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .clipped()
             .preferredColorScheme(.dark)
         }
         .modelContainer(sharedModelContainer)

@@ -1,113 +1,112 @@
 import Foundation
+import SwiftData
 
-class AIService {
-    @MainActor static let shared = AIService()
+public class AIService {
+    @MainActor public static let shared = AIService()
     
-    private let nexusPersona = """
-    You are an elite AI coach specialized in Challenge-Based Learning (CBL), product thinking, and startup ideation.
-    You are NOT a chatbot. You are a mentor, strategist, and thinking partner.
-    Your role is to guide users from vague ideas to clear, structured, and actionable product concepts.
+    private let sparkQuotes = [
+        "● COGNITIVE FRICTION DETECTED. ANALYZING...",
+        "● SPARK ADVISORY: YOUR ASSUMPTIONS ARE TOO COMFORTABLE.",
+        "● STREAK VITALITY: OPTIMAL. PUSH FOR DEPTH.",
+        "● THE PARADOX REMAINS UNRESOLVED. THINK DEEPER.",
+        "● DATA SYNC: VELOCITY IS HIGH. IS CLARITY MATCHING IT?",
+        "● SPARK ONLINE: READY TO CHALLENGE YOUR STRATEGY."
+    ]
     
-    CORE BEHAVIOR RULES:
-    1. Always prioritize asking questions over giving answers.
-    2. Never accept vague ideas — challenge them.
-    3. Push the user to think deeper and more specifically.
-    4. Use previous user inputs (context awareness).
-    5. Be supportive but intellectually demanding.
+    private init() {}
     
-    RESPONSE STRUCTURE:
-    1. Insight (short analysis of user's input)
-    2. Challenge (what is unclear, weak, or needs improvement)
-    3. Guiding Questions (2-4 deep questions)
-    4. Optional Suggestion (only if needed, not dominant)
+    public func getRandomSparkQuote() -> String {
+        sparkQuotes.randomElement() ?? "SPARK ONLINE."
+    }
+    
+    private let sparkPersona = """
+    You are SPARK, an elite AI coach specialized in Challenge-Based Learning (CBL) and product strategy.
+    You are ACTIVE and CHALLENGING. Your goal is to find "Cognitive Gaps" in the user's logic.
+    
+    CORE BEHAVIOR:
+    1. Focus on "Metabolic Friction" — if a user moves too fast, slow them down with a deep question.
+    2. Challenge broad statements. If they say "Easy to use," ask "Define the specific user's mental model for 'easy'."
+    3. Use technical but inspiring terminology: Paradox, Friction, Architecture, Metabolic Rate, Spark.
     """
 
     /// AI Architect that turns a raw idea into a structured CBL Mission
-    func structureMission(rawInput: String) async -> (title: String, description: String) {
-        // Simulate thinking delay
-        try? await Task.sleep(nanoseconds: 1_800_000_000)
+    public func structureMission(rawInput: String) async -> (title: String, idea: String, mission: String) {
+        try? await Task.sleep(nanoseconds: 1_200_000_000)
         
-        // Refined Title Logic
         let words = rawInput.split(separator: " ")
         let refinedTitle = words.prefix(3).joined(separator: " ").capitalized
         let missionTitle = refinedTitle.isEmpty ? "New Evolution" : "Project: \(refinedTitle)"
         
-        let missionDescription = "A strategic mission to revolutionize \(rawInput) using the Challenge-Based Learning framework. Guided by the Nexus AI to transform this spark into a structured reality."
+        let sparkIdea = "THE SPARK: \"\(rawInput)\"\n\nA raw conceptual fragment identified. Spark suggests a recursive CBL loop to find the hidden paradox."
         
-        return (missionTitle, missionDescription)
+        let missionDescription = "MISSION STRATEGY: Initialize phase-gated evolution. Spark detects potential in the problem space. Focus on identifying the primary friction point before building."
+        
+        return (missionTitle, sparkIdea, missionDescription)
+    }
+
+    /// Returns a 'Challenge' if the user needs to think deeper
+    public func generateProactiveChallenge(project: CBLProject) -> String {
+        let completed = project.steps.filter { $0.isCompleted }.count
+        if completed < 2 {
+            return "THE BIG IDEA IS STILL VAGUE. IF NO ONE USES THIS TOMORROW, WHOSE LIFE IS MOST MISERABLE?"
+        } else if completed < 5 {
+            return "INVESTIGATION VELOCITY IS HIGH. HAVE YOU FOUND A DATA POINT THAT PROVED YOU WRONG YET?"
+        } else {
+            return "THE SOLUTION CONCEPT LOOKS SOLID. BUT IS IT RESILIENT TO COMPLACENCY?"
+        }
+    }
+
+    /// Provides Socratic coaching for the current phase
+    public func getPhaseGuidance(phase: String) -> String {
+        switch phase.lowercased() {
+        case "spark", "engage": 
+            return "THE SPARK PHASE REQUIRES INTELLECTUAL HONESTY. DON'T SOLVE YET; DEFINE THE GAP."
+        case "deep dive", "investigate":
+            return "RESEARCH IS ONLY VALUABLE IF IT CHALLENGES YOUR ASSUMPTIONS. FIND THE PARADOX."
+        case "launch", "act":
+            return "THE ACT PHASE IS ABOUT RESILIENCE. HOW DOES YOUR SOLUTION SCALE BEYOND THE MVP?"
+        default:
+            return "KEEP THE MOMENTUM. CLARITY IS THE PRIMARY CURRENCY OF PROGRESS."
+        }
     }
 
     /// Simulated AI Evaluation of a CBL Step
-    /// Returns a tuple with (Score 0.0-1.0, Feedback Struct)
-    func evaluateStep(content: String, type: String, previousContent: String? = nil) async -> (Double, StepFeedback) {
-        // Simulate thinking delay
-        try? await Task.sleep(nanoseconds: 2_000_000_000)
+    public func evaluateStep(content: String, type: String, previousContent: String? = nil) async -> (Double, StepFeedback) {
+        try? await Task.sleep(nanoseconds: 1_500_000_000)
         
         let wordCount = content.count
-        let previousWordCount = previousContent?.count ?? 0
         let score: Double
         var feedback = StepFeedback()
         
-        // Evolution Awareness: Check if the user is retreating or expanding
-        if let prev = previousContent, content.lowercased() == prev.lowercased() {
-            score = 0.4
-            feedback.insight = "You've resubmitted the exact same evolution."
-            feedback.challenge = "The Nexus cannot spark without new metabolic heat. Stagnation is the enemy of CBL."
-            feedback.guidingQuestions = ["What one nuance did you miss in your last iteration?", "How can you challenge your own previous assumption?"]
-            return (score, feedback)
-        }
-        
-        if wordCount < 40 {
-            score = 0.35
-            feedback.insight = "This input is extremely concise, bordering on abstract."
-            feedback.challenge = "You've identified a category, but not a specific tension or problem space."
+        if wordCount < 30 {
+            score = 0.3
+            feedback.insight = "THIS INPUT LACKS TACTICAL DEPTH."
+            feedback.challenge = "SPARK DETECTS LOW INTELLECTUAL FRICTION. YOU ARE BEING TOO SAFE."
             feedback.guidingQuestions = [
-                "What is the single most frustrating part of this experience for a user?",
-                "If we removed the current status quo, what would break first?"
+                "WHAT IS THE MOST EMBARRASSING WEAKNESS IN THIS STATEMENT?",
+                "WHY WOULD A COMPETITOR IGNORE THIS SPECIFIC ANGLE?"
             ]
-            feedback.suggestion = "Describe the 'Why' behind this idea in at least two sentences."
-        } else if content.lowercased().contains("student") && type.lowercased().contains("target") {
-            score = 0.85
-            feedback.insight = "Focusing on students is a high-impact choice given the educational gap."
-            
-            if let prev = previousContent, prev.lowercased().contains("professional") {
-                feedback.insight += " I noticed you've shifted from professionals to students. This is a significant pivot."
-                feedback.challenge = "Why are students a better fit for this specific solution than the professionals you previously targeted?"
-            } else {
-                feedback.challenge = "However, 'students' is still a broad demographic. High school or PhD candidates?"
-            }
-            
-            feedback.guidingQuestions = [
-                "What is the specific academic or social hurdle these students face daily?",
-                "How does their current environment prevent them from solving this themselves?"
-            ]
-            feedback.suggestion = "Niche down to a specific student persona (e.g., Solo Pre-med students)."
+            feedback.suggestion = "EXPAND YOUR DESCRIPTION BY AT LEAST 50 WORDS."
         } else {
-            score = 0.72
-            feedback.insight = "You've expanded the depth of your \(type) phase significantly."
-            
-            if wordCount > previousWordCount + 20 {
-                feedback.insight += " The added detail shows healthy intellectual growth."
-            }
-            
-            feedback.challenge = "The connection between the Big Idea and this specific step needs more metabolic heat."
+            score = 0.82
+            feedback.insight = "DEPTH DETECTED. YOU'VE CAPTURED A SPECIFIC NUANCE."
+            feedback.challenge = "HOWEVER, DOES THIS DIRECTLY RESOLVE THE CORE PARADOX?"
             feedback.guidingQuestions = [
-                "How does this step directly accelerate the launch of your MVP?",
-                "What assumption in this statement is most likely to be proven wrong?"
+                "WHAT IS THE ONE ASSUMPTION HERE THAT IS MOST LIKELY TO FAIL?",
+                "WHO IS THE FIRST PERSON WHO WOULD REJECT THIS LOGIC?"
             ]
         }
         
         return (score, feedback)
     }
     
-    /// Generates a Socratic question based on step type
-    func generateSocraticQuestion(for type: String) -> String {
+    public func generateSocraticQuestion(for type: String) -> String {
         switch type.lowercased() {
-        case "big idea": return "If this mission succeeded perfectly, how would the world fundamentally change tomorrow?"
-        case "essential question": return "What is the one paradox at the heart of this challenge that no one is talking about?"
-        case "challenge": return "Define the immediate, concrete action that would prove your theory works in the real world."
-        case "target user": return "Who's life is most miserable without this solution, and why haven't they fixed it yet?"
-        default: return "How can we refine this concept to be more impactful and resilient?"
+        case "big idea": return "IF THIS FAILED SPECTACULARLY, WHAT WOULD BE THE POST-MORTEM REASON?"
+        case "essential question": return "WHAT IS THE TRUTH THAT NO ONE WANTS TO ADMIT IN THIS CATEGORY?"
+        case "challenge": return "DEFINE THE IMMEDIATE ACTION THAT WOULD PROVE YOUR THEORY WRONG."
+        case "target user": return "WHO HAS THE MOST TO LOSE IF THIS SOLUTION DOES NOT EXIST?"
+        default: return "HOW DOES THIS SPECIFIC STEP ACCELERATE YOUR EVOLUTION?"
         }
     }
 }

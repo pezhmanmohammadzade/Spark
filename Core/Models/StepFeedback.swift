@@ -1,12 +1,19 @@
 import Foundation
 
-struct StepFeedback: Codable {
-    var insight: String = ""
-    var challenge: String = ""
-    var guidingQuestions: [String] = []
-    var suggestion: String?
+public struct StepFeedback: Codable {
+    public var insight: String = ""
+    public var challenge: String = ""
+    public var guidingQuestions: [String] = []
+    public var suggestion: String?
     
-    static var placeholder: StepFeedback {
+    public init(insight: String = "", challenge: String = "", guidingQuestions: [String] = [], suggestion: String? = nil) {
+        self.insight = insight
+        self.challenge = challenge
+        self.guidingQuestions = guidingQuestions
+        self.suggestion = suggestion
+    }
+    
+    public static var placeholder: StepFeedback {
         StepFeedback(
             insight: "Analyze your input for strategic alignment.",
             challenge: "Identify any vague or abstract concepts.",

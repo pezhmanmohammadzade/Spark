@@ -58,17 +58,23 @@ target.build_configurations.each do |config|
   config.build_settings['INFOPLIST_FILE'] = "" 
   
   config.build_settings['INFOPLIST_KEY_UILaunchStoryboardName'] = 'LaunchScreen'
-  config.build_settings['INFOPLIST_KEY_UISupportedInterfaceOrientations'] = 'UIInterfaceOrientationPortrait'
+  
+  # Support ALL orientations (Resolves Xcode warning)
+  orientations = 'UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight'
+  config.build_settings['INFOPLIST_KEY_UISupportedInterfaceOrientations'] = orientations
+  config.build_settings['INFOPLIST_KEY_UISupportedInterfaceOrientations_ipad'] = orientations
+  
   config.build_settings['INFOPLIST_KEY_CFBundleDisplayName'] = 'Spark'
   
   # ASSETS: Set the app icon
   config.build_settings['ASSETCATALOG_COMPILER_APPICON_NAME'] = 'AppIcon'
   
-  # SIGNING: Enable Ad-hoc signing for Simulator suitability
-  config.build_settings['CODE_SIGN_IDENTITY'] = "-"
+  # SIGNING: Automate signing with user's Team ID
+  config.build_settings['CODE_SIGN_STYLE'] = 'Automatic'
+  config.build_settings['DEVELOPMENT_TEAM'] = "PH7ZFXKNZC"
+  config.build_settings['CODE_SIGN_IDENTITY'] = "Apple Development"
   config.build_settings['CODE_SIGNING_REQUIRED'] = "YES"
   config.build_settings['CODE_SIGNING_ALLOWED'] = "YES"
-  config.build_settings['DEVELOPMENT_TEAM'] = "" # Leave empty for local signing
 end
 
 # Recreate schemes to ensure the new target is launchable

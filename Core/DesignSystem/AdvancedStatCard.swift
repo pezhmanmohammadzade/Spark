@@ -1,15 +1,23 @@
 import SwiftUI
 
-struct AdvancedStatCard: View {
-    let title: String
-    let value: String
-    let icon: String
-    let color: Color
-    let trend: String?
+public struct AdvancedStatCard: View {
+    public let title: String
+    public let value: String
+    public let icon: String
+    public let color: Color
+    public let trend: String?
+    
+    public init(title: String, value: String, icon: String, color: Color, trend: String? = nil) {
+        self.title = title
+        self.value = value
+        self.icon = icon
+        self.color = color
+        self.trend = trend
+    }
     
     @State private var isHovering = false
     
-    var body: some View {
+    public var body: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {

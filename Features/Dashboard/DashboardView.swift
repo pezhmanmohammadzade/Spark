@@ -1,10 +1,12 @@
 import SwiftUI
 import SwiftData
 
-struct DashboardView: View {
+public struct DashboardView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var projects: [CBLProject]
     @Query private var stats: [UserStats]
+    
+    public init() {}
     
     private var currentUserStats: UserStats {
         if let first = stats.first {
@@ -23,6 +25,9 @@ struct DashboardView: View {
     ]
     
     @State private var navigatedProject: CBLProject? // Programmatic navigation trigger
+    @State private var briefingProject: CBLProject? // Project currently being briefed
+    @State private var showHistory = false
+    @Namespace private var heroNamespace // Matched Geometry
     
     private var totalInsights: Int {
         projects.flatMap { $0.steps }.filter { !$0.aiInsight.isEmpty }.count
@@ -34,14 +39,13 @@ struct DashboardView: View {
         }.count
     }
     
-    var body: some View {
+    public var body: some View {
         NavigationStack {
             GeometryReader { geo in
                 ZStack {
-                    // Persistent Background (Mathematically locked)
+                    // Persistent Background
                     SparkBackground()
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .clipped()
+                        .ignoresSafeArea()
                         .allowsHitTesting(false)
                     
                     VStack(spacing: 0) {
@@ -49,54 +53,63 @@ struct DashboardView: View {
                             VStack(alignment: .leading, spacing: 24) {
                                 // Brand Header
                                 HStack(spacing: 12) {
-                                    Image("AppLogo")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
+                                    // Using system image since AppLogo might be missing in some builds
+                                    Image(systemName: "sparkles")
+                                        .font(.title2)
+                                        .foregroundColor(SparkTheme.Colors.xpElectric)
                                         .frame(width: 44, height: 44)
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                                        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.white.opacity(0.1), lineWidth: 0.5))
+                                        .background(Circle().fill(Color.white.opacity(0.1)))
                                     
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text("SPARK")
                                             .font(.system(size: 24, weight: .black, design: .rounded))
                                             .foregroundColor(.white)
-                                            .tracking(2)
-                                        Text("NEXUS ENGINE v1.0")
-                                            .font(.system(size: 8, weight: .bold))
-                                            .foregroundColor(SparkTheme.Colors.xpElectric)
-                                            .tracking(1)
                                     }
                                     Spacer()
+                                    
+                                    Button(action: { 
+                                        HapticManager.shared.triggerSelection()
+                                        showHistory = true 
+                                    }) {
+                                        Image(systemName: "clock.arrow.circlepath")
+                                            .font(.title3.bold())
+                                            .foregroundColor(.white)
+                                            .frame(width: 44, height: 44)
+                                            .background(Circle().fill(Color.white.opacity(0.1)))
+                                    }
                                 }
                                 .padding(.top, 20)
 
                                 // Header & Progress
                                 XPProgressHeader(stats: currentUserStats)
                                 
-                                // NEW: Idea Spark Engine
-                                IdeaSparkBox(onSpark: { newProject in
-                                    navigatedProject = newProject
+                                // IDEA SPARK ENGINE
+                                IdeaSparkBox(onSpark: { (newProject: CBLProject) in
+                                    briefingProject = newProject
                                 })
+                                
+                                // SPARK TACTICAL FEED
+                                SparkTacticalFeed()
+                                    .padding(.bottom, 8)
                                 
                                 // Bento Grid
                                 LazyVGrid(columns: columns, spacing: 16) {
                                     if let activeProject = projects.first {
-                                        NavigationLink(destination: PhaseGateNavigation(project: activeProject)) {
+                                        Button(action: {
+                                            HapticManager.shared.triggerSelection()
+                                            briefingProject = activeProject
+                                        }) {
                                             HeroBentoCard(project: activeProject)
+                                                .matchedGeometryEffect(id: "hero_card", in: heroNamespace)
                                         }
                                         .buttonStyle(.plain)
                                         .gridCellColumns(2)
-                                        .accessibilityLabel("Current Mission: \(activeProject.title)")
-                                        .accessibilityHint("Tap to resume your quest.")
                                     } else {
                                         NewProjectBento()
                                             .gridCellColumns(2)
-                                            .accessibilityLabel("No active mission")
-                                            .accessibilityHint("Tap to start your first discovery.")
                                     }
                                     
                                     StreakCard(streak: currentUserStats.dailyStreak)
-                                        .accessibilityLabel("\(currentUserStats.dailyStreak) Day Streak")
                                     
                                     AdvancedStatCard(
                                         title: "Insights",
@@ -105,7 +118,6 @@ struct DashboardView: View {
                                         color: .purple,
                                         trend: totalInsights > 0 ? "LIVE" : nil
                                     )
-                                    .accessibilityLabel("\(totalInsights) Strategic Insights found")
                                     
                                     AdvancedStatCard(
                                         title: "Target MET",
@@ -115,35 +127,41 @@ struct DashboardView: View {
                                         trend: projects.count > 0 ? "\(Int(Double(totalTargetsMET)/Double(max(projects.count, 1)) * 100))%" : nil
                                     )
                                     .gridCellColumns(2)
-                                    .accessibilityLabel("\(totalTargetsMET) Solutions validated")
                                 }
                                 
                                 Spacer(minLength: 140)
                             }
                             .padding(.horizontal, 20)
-                            .frame(width: geo.size.width) // Constraint check
                         }
                     }
                     
-                    // Sticky Action Button (Bottom Locked)
+                    // Sticky Action Button
                     VStack {
                         Spacer()
                         resumeButton
                             .padding(.horizontal, 24)
                             .padding(.bottom, 10)
-                            .frame(width: geo.size.width) // Constraint check
                     }
                 }
                 .onTapGesture {
                     hideKeyboard()
                 }
-                .frame(width: geo.size.width, height: geo.size.height)
-                .clipped() // Hard-Lock everything inside
-            }
-            .navigationDestination(item: $navigatedProject) { project in
-                PhaseGateNavigation(project: project)
             }
             .toolbar(.hidden)
+            .sheet(item: $briefingProject) { (project: CBLProject) in
+                MissionBriefingView(project: project) {
+                    briefingProject = nil
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        navigatedProject = project
+                    }
+                }
+            }
+            .fullScreenCover(isPresented: $showHistory) {
+                HistoryView()
+            }
+            .navigationDestination(item: $navigatedProject) { (p: CBLProject) in
+                PhaseGateNavigation(project: p)
+            }
         }
     }
     
@@ -151,12 +169,12 @@ struct DashboardView: View {
         Button(action: {
             HapticManager.shared.triggerSelection()
             if let firstProject = projects.first {
-                navigatedProject = firstProject
+                briefingProject = firstProject
             } else {
-                // Emergency Recovery: If query is still loading, create and navigate
                 let newP = CBLProject(title: "New Discovery")
+                newP.generateDefaultSteps()
                 modelContext.insert(newP)
-                navigatedProject = newP
+                briefingProject = newP
             }
         }) {
             HStack {
@@ -172,13 +190,46 @@ struct DashboardView: View {
             .foregroundColor(.black)
             .shadow(color: .white.opacity(0.3), radius: 15)
         }
-        .onChange(of: navigatedProject) { _, _ in
-            HapticManager.shared.triggerSelection()
+    }
+}
+
+// MARK: - Spark Components
+
+struct SparkTacticalFeed: View {
+    @State private var currentQuote: String = AIService.shared.getRandomSparkQuote()
+    let timer = Timer.publish(every: 8.0, on: .main, in: .common).autoconnect()
+    
+    var body: some View {
+        GlassCard {
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Image(systemName: "bolt.fill")
+                            .foregroundColor(SparkTheme.Colors.xpElectric)
+                            .symbolEffect(.pulse)
+                        Text("SPARK_TACTICAL_FEED")
+                            .font(SparkTheme.Typography.micro)
+                            .foregroundColor(.white.opacity(0.6))
+                            .tracking(2)
+                    }
+                    
+                    Text(currentQuote)
+                        .font(.system(size: 11, weight: .bold, design: .monospaced))
+                        .foregroundColor(SparkTheme.Colors.xpElectric)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+            }
+        }
+        .onReceive(timer) { _ in
+            withAnimation {
+                currentQuote = AIService.shared.getRandomSparkQuote()
+            }
         }
     }
 }
 
-// MARK: - Bento Components (Self-Contained)
+// MARK: - Bento Components
 
 struct HeroBentoCard: View {
     let project: CBLProject
@@ -191,8 +242,11 @@ struct HeroBentoCard: View {
                     .foregroundColor(SparkTheme.Colors.xpElectric)
                     .tracking(2)
                 Spacer()
-                Image(systemName: "arrow.up.forward.circle.fill")
-                    .foregroundColor(.white.opacity(0.3))
+                // Active Pulse for Spark's Insight
+                Image(systemName: "brain.head.profile")
+                    .font(.caption)
+                    .foregroundColor(SparkTheme.Colors.xpElectric)
+                    .symbolEffect(.pulse)
             }
             
             Text(project.title)
@@ -208,7 +262,7 @@ struct HeroBentoCard: View {
                 
                 Spacer()
                 
-                Text("65%")
+                Text("\(Int(project.steps.filter { $0.isCompleted }.count * 10))%")
                     .font(SparkTheme.Typography.micro)
                     .foregroundColor(.white.opacity(0.6))
             }
@@ -228,12 +282,12 @@ struct NewProjectBento: View {
             
             Button("START NEW QUEST") {
                 let p = CBLProject(title: "Future of Mars")
+                p.generateDefaultSteps()
                 modelContext.insert(p)
             }
             .buttonStyle(.borderedProminent)
             .tint(.blue)
         }
-        .frame(maxWidth: .infinity)
         .bentoStyle()
     }
 }
@@ -288,24 +342,22 @@ struct IdeaSparkBox: View {
                 .disabled(rawIdea.isEmpty || isSparking)
             }
         }
-        .padding(.bottom, 24)
     }
     
     private func sparkMission() {
         isSparking = true
-        HapticManager.shared.triggerImpact(1) // 1 for medium
+        HapticManager.shared.triggerImpact(1)
         
         Task {
             let result = await AIService.shared.structureMission(rawInput: rawIdea)
-            
             await MainActor.run {
-                let newProject = CBLProject(title: result.title, description: result.description)
-                modelContext.insert(newProject)
-                
+                let newP = CBLProject(title: result.title, initialIdea: result.idea, description: result.mission)
+                newP.generateDefaultSteps()
+                modelContext.insert(newP)
                 withAnimation {
                     isSparking = false
                     rawIdea = ""
-                    onSpark(newProject)
+                    onSpark(newP)
                 }
             }
         }

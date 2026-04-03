@@ -1,10 +1,15 @@
 import SwiftUI
+import SwiftData
 
-struct StreakCard: View {
-    let streak: Int
+public struct StreakCard: View {
+    public let streak: Int
     @State private var pulse = false
     
-    var body: some View {
+    public init(streak: Int) {
+        self.streak = streak
+    }
+    
+    public var body: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {

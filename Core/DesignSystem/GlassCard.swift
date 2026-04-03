@@ -1,17 +1,17 @@
 import SwiftUI
 
-struct GlassCard<Content: View>: View {
+public struct GlassCard<Content: View>: View {
     let content: Content
     var cornerRadius: CGFloat = 24
     var showInnerShadow: Bool = true
     
-    init(cornerRadius: CGFloat = 24, showInnerShadow: Bool = true, @ViewBuilder content: () -> Content) {
+    public init(cornerRadius: CGFloat = 24, showInnerShadow: Bool = true, @ViewBuilder content: () -> Content) {
         self.cornerRadius = cornerRadius
         self.showInnerShadow = showInnerShadow
         self.content = content()
     }
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             // Main Glass Plate
             RoundedRectangle(cornerRadius: cornerRadius)

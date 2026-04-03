@@ -1,8 +1,8 @@
 import SwiftUI
 import SwiftData
 
-struct StepDetailView: View {
-    @Bindable var step: CBLStep
+public struct StepDetailView: View {
+    @Bindable public var step: CBLStep
     @Query private var stats: [UserStats]
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
@@ -13,15 +13,17 @@ struct StepDetailView: View {
     @State private var currentScore: Double = 0.0
     @State private var currentFeedback = StepFeedback()
     
-    var body: some View {
+    public init(step: CBLStep) {
+        self.step = step
+    }
+    
+    public var body: some View {
         GeometryReader { geo in
             ZStack {
                 SparkBackground()
-                    .frame(width: geo.size.width, height: geo.size.height)
-                    .clipped()
+                    .ignoresSafeArea()
                 
-                VStack(spacing: 12) { // Stable layout spacing
-                    // Header Area
+                VStack(spacing: 12) {
                     header
                     
                     if !showingFeedback && !isAnalyzing {
@@ -41,8 +43,6 @@ struct StepDetailView: View {
             .onTapGesture {
                 hideKeyboard()
             }
-            .frame(width: geo.size.width, height: geo.size.height)
-            .clipped()
         }
         .navigationBarBackButtonHidden()
     }
@@ -100,7 +100,7 @@ struct StepDetailView: View {
             }
             .frame(width: 100, height: 100)
             
-            Text("THE NEXUS IS ANALYZING...")
+            Text("SPARK IS ANALYZING...")
                 .font(SparkTheme.Typography.micro)
                 .tracking(2)
                 .foregroundColor(.white.opacity(0.6))
@@ -109,7 +109,6 @@ struct StepDetailView: View {
     
     private var evaluationPhase: some View {
         VStack(spacing: 24) {
-            // Score Meter
             ZStack {
                 Circle().stroke(Color.white.opacity(0.1), lineWidth: 8)
                 Circle().trim(from: 0, to: currentScore).stroke(scoreColor, lineWidth: 8)
@@ -123,11 +122,7 @@ struct StepDetailView: View {
                 .foregroundColor(.white)
             }
             .frame(width: 140, height: 140)
-            .accessibilityElement(children: .combine)
-            .accessibilityLabel("Evaluation Score")
-            .accessibilityValue("\(Int(currentScore * 100)) percent")
             
-            // AI Feedback Card
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     feedbackSection(title: "INSIGHT", content: currentFeedback.insight, icon: "eye.fill", color: SparkTheme.Colors.xpElectric)
@@ -194,17 +189,16 @@ struct StepDetailView: View {
             .foregroundColor(.white)
         }
         .disabled(!showingFeedback && inputContent.isEmpty)
-        .opacity(inputContent.isEmpty ? 0.6 : 1.0)
+        .opacity(inputContent.isEmpty && !showingFeedback ? 0.6 : 1.0)
         .padding(.bottom, 20)
     }
     
-    // Logic Computed
     private var scoreColor: Color {
         currentScore >= 0.7 ? SparkTheme.Colors.act : SparkTheme.Colors.streakFlame
     }
     
     private var buttonLabel: String {
-        if !showingFeedback { return "SUBMIT TO NEXUS" }
+        if !showingFeedback { return "SUBMIT TO SPARK" }
         return currentScore >= 0.7 ? "CLEAR GATE" : "RE-EVOLVE"
     }
     
@@ -259,36 +253,5 @@ struct StepDetailView: View {
         try? modelContext.save()
         HapticManager.shared.triggerSuccess()
         dismiss()
-    }
-}
-
-// Success Animation Overlay
-struct SuccessXPOverlay: View {
-    let xp: Int
-    
-    var body: some View {
-        ZStack {
-            Color.black.opacity(0.8).ignoresSafeArea()
-            
-            VStack(spacing: 24) {
-                Image(systemName: "sparkles")
-                    .font(.system(size: 80))
-                    .foregroundColor(SparkTheme.Colors.levelGold)
-                
-                Text("EVOLUTION CLEARED")
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.white)
-                
-                HStack(spacing: 12) {
-                    Text("+\(xp)")
-                        .font(.system(size: 44, weight: .black, design: .rounded))
-                        .foregroundColor(SparkTheme.Colors.xpElectric)
-                    Text("XP")
-                        .font(.headline)
-                        .foregroundColor(.white.opacity(0.6))
-                }
-            }
-        }
     }
 }

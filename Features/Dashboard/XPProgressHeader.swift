@@ -1,9 +1,14 @@
 import SwiftUI
+import SwiftData
 
-struct XPProgressHeader: View {
-    let stats: UserStats
+public struct XPProgressHeader: View {
+    public let stats: UserStats
     
-    var body: some View {
+    public init(stats: UserStats) {
+        self.stats = stats
+    }
+    
+    public var body: some View {
         HStack(spacing: 16) {
             // Level Badge
             ZStack {
@@ -23,7 +28,7 @@ struct XPProgressHeader: View {
                         .font(SparkTheme.Typography.cardHeader)
                         .foregroundColor(.white)
                     Spacer()
-                    Text("\(stats.currentXP) / \(stats.xpForNextLevel) XP")
+                    Text("\(stats.currentXP) / \(max(1, stats.xpForNextLevel)) XP")
                         .font(SparkTheme.Typography.micro)
                         .foregroundColor(.white.opacity(0.6))
                 }
@@ -37,7 +42,7 @@ struct XPProgressHeader: View {
                         
                         Capsule()
                             .fill(LinearGradient(colors: [SparkTheme.Colors.xpElectric, .blue], startPoint: .leading, endPoint: .trailing))
-                            .frame(width: max(0, min(geo.size.width, geo.size.width * CGFloat(stats.currentXP) / CGFloat(stats.xpForNextLevel))), height: 10)
+                            .frame(width: max(0, min(geo.size.width, geo.size.width * CGFloat(stats.currentXP) / CGFloat(max(1, stats.xpForNextLevel)))), height: 10)
                             .shadow(color: SparkTheme.Colors.xpElectric.opacity(0.5), radius: 5)
                     }
                 }
