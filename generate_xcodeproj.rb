@@ -50,6 +50,8 @@ target.build_configurations.each do |config|
   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
   config.build_settings['SWIFT_VERSION'] = '6.0'
   config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.spark.app.concept'
+  config.build_settings['MARKETING_VERSION'] = '1.0'
+  config.build_settings['CURRENT_PROJECT_VERSION'] = '1'
   
   # MODERN PLISTS: Disable old Info.plist checking
   config.build_settings['GENERATE_INFOPLIST_FILE'] = 'YES'
