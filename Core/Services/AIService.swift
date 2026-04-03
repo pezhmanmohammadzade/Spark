@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-public class AIService {
+public final class AIService: Sendable {
     @MainActor public static let shared = AIService()
     
     private let sparkQuotes = [
