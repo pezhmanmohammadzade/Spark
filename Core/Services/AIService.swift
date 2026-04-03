@@ -10,7 +10,9 @@ public class AIService {
         "● STREAK VITALITY: OPTIMAL. PUSH FOR DEPTH.",
         "● THE PARADOX REMAINS UNRESOLVED. THINK DEEPER.",
         "● DATA SYNC: VELOCITY IS HIGH. IS CLARITY MATCHING IT?",
-        "● SPARK ONLINE: READY TO CHALLENGE YOUR STRATEGY."
+        "● SPARK ONLINE: READY TO CHALLENGE YOUR STRATEGY.",
+        "● THE TRANSMISSION IS INCOMPLETE. SEEK THE CORE.",
+        "● EVOLVE THE NARRATIVE: FRICTION IS KNOWLEDGE."
     ]
     
     private init() {}
@@ -108,5 +110,29 @@ public class AIService {
         case "target user": return "WHO HAS THE MOST TO LOSE IF THIS SOLUTION DOES NOT EXIST?"
         default: return "HOW DOES THIS SPECIFIC STEP ACCELERATE YOUR EVOLUTION?"
         }
+    }
+
+    /// Premium Workshop Validation Architecture
+    public func validateWorkshopResponse(topic: String, title: String, response: String, keywords: [String], minWords: Int) async -> (isValid: Bool, feedback: String) {
+        try? await Task.sleep(nanoseconds: 2_000_000_000) // Simulated deep scan
+        
+        let words = response.lowercased().split(separator: " ")
+        let wordCount = words.count
+        
+        // Check depth
+        if wordCount < minWords {
+            return (false, "INSIDENCE DETECTED: RESPONSE IS TOO SHALLOW. THE METABOLIC DEPTH IS INSUFFICIENT FOR \(topic.uppercased()) EVOLUTION. PLEASE EXPAND YOUR REASONING.")
+        }
+        
+        // Check keywords
+        let matches = keywords.filter { response.lowercased().contains($0.lowercased()) }
+        let matchRate = Double(matches.count) / Double(max(keywords.count, 1))
+        
+        if matchRate < 0.3 {
+            return (false, "MISALIGNED ARCHITECTURE: YOU HAVE MENTIONED NONE OF THE CORE GUIDING PRINCIPLES (\(keywords.prefix(2).joined(separator: ", "))). NARRATIVE RE-EVOLUTION IS REQUIRED.")
+        }
+        
+        // Success
+        return (true, "EVOLUTION VALIDATED: YOUR STRATEGY FOR \(title) IS RESILIENT. YOU HAVE SUCCESSFULLY SYNTHESIZED THE COGNITIVE TRANSMISSIONS.")
     }
 }

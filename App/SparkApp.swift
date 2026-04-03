@@ -8,6 +8,7 @@ struct SparkApp: App {
             CBLProject.self,
             CBLStep.self,
             EvolutionSnapshot.self,
+            Workshop.self,
             UserStats.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)

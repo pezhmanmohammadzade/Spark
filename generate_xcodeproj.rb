@@ -21,10 +21,10 @@ def add_files_recursively(main_group, base_folder, target)
     target_group = main_group.find_subpath(file_dir, true)
     
     # Check if file already exists to avoid duplicates
-    existing_file = target_group.files.find { |f| f.path == File.expand_path(file_path) }
+    existing_file = target_group.files.find { |f| f.path == file_path }
     next if existing_file
     
-    file_ref = target_group.new_file(File.expand_path(file_path))
+    file_ref = target_group.new_file(file_path)
     
     # CRITICAL: Dynamically add to the 'Sources' build phase
     target.source_build_phase.add_file_reference(file_ref)

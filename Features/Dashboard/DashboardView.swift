@@ -5,6 +5,7 @@ public struct DashboardView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var projects: [CBLProject]
     @Query private var stats: [UserStats]
+    @Query private var workshops: [Workshop]
     
     public init() {}
     
@@ -37,6 +38,10 @@ public struct DashboardView: View {
         projects.filter { project in
             project.steps.contains { $0.type == "Solution Concept" && $0.isCompleted }
         }.count
+    }
+    
+    private var allWorkshopsCompleted: Bool {
+        !workshops.isEmpty && workshops.allSatisfy { $0.isCompleted }
     }
     
     public var body: some View {
@@ -79,6 +84,12 @@ public struct DashboardView: View {
                                     }
                                 }
                                 .padding(.top, 20)
+                                
+                                NexusMasteryBanner(
+                                    completedCount: workshops.filter { $0.isCompleted }.count,
+                                    totalCount: workshops.count
+                                )
+                                .transition(.move(edge: .top).combined(with: .opacity))
 
                                 // Header & Progress
                                 XPProgressHeader(stats: currentUserStats)
@@ -90,6 +101,10 @@ public struct DashboardView: View {
                                 
                                 // SPARK TACTICAL FEED
                                 SparkTacticalFeed()
+                                    .padding(.bottom, 8)
+                                
+                                // AI WORKSHOP SCHEDULE
+                                WorkshopScheduleSection()
                                     .padding(.bottom, 8)
                                 
                                 // Bento Grid
@@ -193,6 +208,106 @@ public struct DashboardView: View {
     }
 }
 
+// MARK: - Mastery Certificate
+
+struct NexusMasteryBanner: View {
+    let completedCount: Int
+    let totalCount: Int
+    
+    private var isUnlocked: Bool {
+        totalCount > 0 && completedCount == totalCount
+    }
+    
+    private var progress: Double {
+        totalCount > 0 ? Double(completedCount) / Double(totalCount) : 0
+    }
+    
+    var body: some View {
+        GlassCard() {
+            VStack(spacing: 12) {
+                if isUnlocked {
+                    HStack {
+                        Image(systemName: "seal.fill")
+                            .font(.title2)
+                            .foregroundColor(SparkTheme.Colors.xpElectric)
+                            .symbolEffect(.pulse)
+                        
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("CERTIFIED STRATEGIC MENACE")
+                                .font(SparkTheme.Typography.micro)
+                                .foregroundColor(SparkTheme.Colors.xpElectric)
+                                .tracking(2)
+                            
+                            Text("NEXUS MASTER DIPLOMA")
+                                .font(.system(size: 16, weight: .black, design: .rounded))
+                                .foregroundColor(.white)
+                        }
+                        
+                        Spacer()
+                        
+                        Image(systemName: "sparkles")
+                            .foregroundColor(SparkTheme.Colors.xpElectric)
+                    }
+                    
+                    Text("Congratulations. You are now officially smarter than 98% of your competitors. The Void has been successfully disrupted.")
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+                        .foregroundColor(.white.opacity(0.8))
+                        .fixedSize(horizontal: false, vertical: true)
+                } else {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            Image(systemName: "lock.fill")
+                                .font(.caption)
+                                .foregroundColor(.white.opacity(0.6))
+                            
+                            Text("MASTERY_CERTIFICATION_IN_PROGRESS")
+                                .font(SparkTheme.Typography.micro)
+                                .foregroundColor(.white.opacity(0.6))
+                                .tracking(2)
+                            
+                            Spacer()
+                            
+                            Text("\(completedCount)/\(totalCount) MASTERED")
+                                .font(SparkTheme.Typography.micro)
+                                .foregroundColor(SparkTheme.Colors.xpElectric)
+                        }
+                        
+                        // Tactical Progress Bar
+                        GeometryReader { geometry in
+                            ZStack(alignment: .leading) {
+                                Capsule()
+                                    .fill(Color.white.opacity(0.1))
+                                    .frame(height: 6)
+                                
+                                Capsule()
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [SparkTheme.Colors.xpElectric, Color.blue],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )
+                                    .frame(width: geometry.size.width * progress, height: 6)
+                                    .shadow(color: SparkTheme.Colors.xpElectric.opacity(0.5), radius: 4)
+                            }
+                        }
+                        .frame(height: 6)
+                        
+                        Text("Current tactical data insufficient for certification. Proceed with transmissions to evolve.")
+                            .font(.system(size: 10, weight: .bold, design: .monospaced))
+                            .foregroundColor(SparkTheme.Colors.xpElectric.opacity(0.7))
+                    }
+                }
+            }
+        }
+        .onAppear {
+            if isUnlocked {
+                HapticManager.shared.triggerSuccess()
+            }
+        }
+    }
+}
+
 // MARK: - Spark Components
 
 struct SparkTacticalFeed: View {
@@ -200,7 +315,7 @@ struct SparkTacticalFeed: View {
     let timer = Timer.publish(every: 8.0, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        GlassCard {
+        GlassCard() {
             HStack(spacing: 12) {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -262,7 +377,7 @@ struct HeroBentoCard: View {
                 
                 Spacer()
                 
-                Text("\(Int(project.steps.filter { $0.isCompleted }.count * 10))%")
+                Text("\(Int(Double(project.steps.filter { $0.isCompleted }.count) / Double(max(project.steps.count, 1)) * 100))%")
                     .font(SparkTheme.Typography.micro)
                     .foregroundColor(.white.opacity(0.6))
             }
@@ -299,7 +414,7 @@ struct IdeaSparkBox: View {
     var onSpark: (CBLProject) -> Void
     
     var body: some View {
-        GlassCard {
+        GlassCard() {
             VStack(alignment: .leading, spacing: 16) {
                 HStack {
                     Image(systemName: "sparkles")

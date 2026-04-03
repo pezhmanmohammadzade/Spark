@@ -79,17 +79,3 @@ public class CBLStep: Identifiable {
         self.order = order
     }
 }
-
-
-@Model
-public class EvolutionSnapshot: Identifiable {
-    public var id: UUID = UUID()
-    public var timestamp: Date = Date()
-    public var insight: String = ""
-    public var phase: String = ""
-    
-    public init(insight: String, phase: String) {
-        self.insight = insight
-        self.phase = phase
-    }
-}
