@@ -18,55 +18,71 @@ public struct StepDetailView: View {
     }
     
     public var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                SparkBackground()
-                    .ignoresSafeArea()
+        ZStack(alignment: .bottom) {
+            SparkBackground()
+                .ignoresSafeArea()
+            
+            VStack(spacing: 0) {
+                header
+                    .padding(.horizontal, 24)
                 
-                VStack(spacing: 12) {
-                    header
-                    
-                    if !showingFeedback && !isAnalyzing {
-                        inputPhase
-                    } else if isAnalyzing {
-                        analysisPhase
-                    } else {
-                        evaluationPhase
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 24) {
+                        if !showingFeedback && !isAnalyzing {
+                            inputPhase
+                        } else if isAnalyzing {
+                            analysisPhase
+                                .padding(.top, 60)
+                        } else {
+                            evaluationPhase
+                        }
+                        
+                        // CLEARANCE SPACE FOR BUTTON
+                        Spacer(minLength: 120)
                     }
-                    
-                    Spacer()
-                    
-                    actionButton
+                    .padding(.horizontal, 24)
+                    .padding(.top, 12)
                 }
+            }
+            
+            actionButton
                 .padding(.horizontal, 24)
-            }
-            .onTapGesture {
-                hideKeyboard()
-            }
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
         .navigationBarBackButtonHidden()
     }
     
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
-            HStack {
+            HStack(alignment: .center) {
                 Text("MISSION STEP \(step.order + 1)")
                     .font(SparkTheme.Typography.micro)
                     .foregroundColor(SparkTheme.Colors.xpElectric)
                     .tracking(3)
+                
                 Spacer()
-                Button(action: { dismiss() }) {
+                
+                Button(action: { 
+                    HapticManager.shared.triggerSelection()
+                    dismiss() 
+                }) {
                     Image(systemName: "xmark.circle.fill")
-                        .font(.title2)
-                        .foregroundColor(.white.opacity(0.3))
+                        .font(.system(size: 32, weight: .semibold))
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundStyle(.white.opacity(0.4))
+                        .padding(12) // INCREASES HIT AREA
+                        .contentShape(Circle())
                 }
+                .offset(x: 12) // COMPENSATE FOR PADDING
             }
+            .padding(.top, 16)
             
             Text(step.type.uppercased())
                 .font(SparkTheme.Typography.title(size: 32))
                 .foregroundColor(.white)
         }
-        .padding(.top, 40)
     }
     
     private var inputPhase: some View {

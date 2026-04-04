@@ -724,21 +724,12 @@ struct TeachingTransmissionView: View {
             }
             .padding(.top, 40)
         }
-        .onAppear {
-            animateText()
-        }
-    }
-    
-    private func animateText() {
-        let full = content.replacingOccurrences(of: "TEACHING:", with: "").trimmingCharacters(in: .whitespaces)
-        var current = ""
-        _ = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
-            if current.count < full.count {
-                let index = full.index(full.startIndex, offsetBy: current.count)
-                current.append(full[index])
-                visibleText = current
-            } else {
-                timer.invalidate()
+        .task(id: content) {
+            visibleText = ""
+            let fullText = content.replacingOccurrences(of: "TEACHING:", with: "").trimmingCharacters(in: .whitespaces)
+            for character in fullText {
+                visibleText.append(character)
+                try? await Task.sleep(nanoseconds: 20_000_000)
             }
         }
     }
