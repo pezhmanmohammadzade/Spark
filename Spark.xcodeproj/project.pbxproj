@@ -3,252 +3,258 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09C9B55999E783C4B8D124E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C761588E9A3A49E72DD5833 /* Foundation.framework */; };
-		18C0537683DB37996F147266 /* StepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A20BF46A01A8A49C9C3AA /* StepDetailView.swift */; };
-		35E7AD67FD5E1BF7CF7F0D02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CA4067A2EA15FA9B5AE62BF /* Assets.xcassets */; };
-		37D3D7C93DED36C98B300F95 /* NexusTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A631B1A507298E4A22ECA8D8 /* NexusTerminal.swift */; };
-		3DA9680AA5CA5DF92F5863B9 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8778838F321FCFDC0A0E4 /* HistoryView.swift */; };
-		3F2C17DB19ED0C65C74FA2E5 /* PhaseGateNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C830836536B181F21D4A509 /* PhaseGateNavigation.swift */; };
-		41FBA5EB95F45F2D87A80DD6 /* StepFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC435A18FBD03576C7CB25B5 /* StepFeedback.swift */; };
-		43AF8129CC0871CF30049ADD /* StreakCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0005C10F9EE652A11465F70F /* StreakCard.swift */; };
-		4B6EFD23704114A7767753DA /* AdvancedStatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA9266C18618ECD3614C9C2 /* AdvancedStatCard.swift */; };
-		5F2E5FFAC410C9284B592DC4 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6423CB0F35F0DD41E5A024F /* AIService.swift */; };
-		6CF77EA85BCAE38812910BC8 /* EvolutionSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11CC917E044AEDFCBBD5EC9 /* EvolutionSnapshot.swift */; };
-		7BD01D4E5D23A2668FFE7893 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93EBB69C45E2433C5967DB /* UserStats.swift */; };
-		8D8F370C1AD5284CA1520ECE /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384FFFA7ABBF35A392EEB823 /* DashboardView.swift */; };
-		9099AE397FEFFA0880114EA3 /* SparkMeshBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F5B9506E8C8BDF80B10D8 /* SparkMeshBackground.swift */; };
-		9372D72FD5BAF58518E09BB8 /* Workshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6273F61D5ABD9CE669A76C1 /* Workshop.swift */; };
-		B036CE883973CC0A8281B1A9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6229F8519D200B15ADA21 /* Theme.swift */; };
-		B6CE60B7B9BF0D4BBFAC6FF6 /* SmallInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE1C2AFB75E8F52AEC855C7 /* SmallInfoCard.swift */; };
-		BDDA208AA816484CA806F66C /* EvolvingHexagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A206C2791F79092BFCC6B /* EvolvingHexagon.swift */; };
-		C109D6D78CF8E6A7EEC026F7 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CDC7DBEEA1EACB59CC143D /* GlassCard.swift */; };
-		C3EC4E749A04F15EDD6B9442 /* XPProgressHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D74BAAE0FC6CFEB952C6EA6 /* XPProgressHeader.swift */; };
-		D0BC237E4CA1C90AB88979C8 /* WorkshopFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B0D59A14F35B9285F226B5 /* WorkshopFeature.swift */; };
-		E683CCD14114CC5AAB1A5BD2 /* SparkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097D7931D562CB69D178E6E /* SparkApp.swift */; };
-		E90B85BF2D8F5CAAF79DD0DA /* SparkSplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238D8919D18005602543528 /* SparkSplashScreenView.swift */; };
-		EA52B2E2294D624BDD19F974 /* MissionBriefingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B422992D7839D6AF388EC8 /* MissionBriefingView.swift */; };
-		FAA270926E720DAB4B5FC5D3 /* CBLModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41305E78A5E58AFBA11D0F18 /* CBLModels.swift */; };
-		FCCD3F25D0D101A80806A848 /* SparkBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B62857C4618B4E51E9E8B1 /* SparkBackground.swift */; };
+		0B2B7ED4B657E393C5C49DB0 /* EvolutionSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12352495E5555A2283FD5E /* EvolutionSnapshot.swift */; };
+		1B760609BF7D972470AD8591 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2958FC827BA763D0AF336C21 /* Theme.swift */; };
+		1DC000F58CF71500ABF93B96 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE12BF403093C4D2CCC1E6F5 /* HistoryView.swift */; };
+		248138BFD348B186AC59B54E /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25973E2F493BDEC68B12441A /* UserStats.swift */; };
+		249173353314F3C53F37A222 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AC098A42EB54F13F4A32F9 /* Foundation.framework */; };
+		25D3ADBC9BEA2112A6237537 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4A1AE0759440931F991280 /* DashboardView.swift */; };
+		391AC88AF3B3C689623D1DD3 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBA784F9D57D24A0C045127 /* GlassCard.swift */; };
+		47E6E2EA3410FF46CF7D4928 /* XPProgressHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A222521FD4B3196914DC66B /* XPProgressHeader.swift */; };
+		4AC9BE459774709F33DD120A /* StepFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645944D7E4A5E29FFD5D696C /* StepFeedback.swift */; };
+		4C73453BED484FE8EADC1EB6 /* Workshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F86D85AC334F9B6125C0B4 /* Workshop.swift */; };
+		52F131E106099CD45228CAA2 /* SparkSplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE328AC7FAA5D39E6F55D30 /* SparkSplashScreenView.swift */; };
+		7C5EE4B6E364E9C043361FB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2849E9427DF3F6B4F4292FF /* LaunchScreen.storyboard */; };
+		89DCC5270921A05862BCD1AF /* CBLGuideService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BCA5D782256F021F27EFC /* CBLGuideService.swift */; };
+		8F175EB8E7FA1F1027AA08AD /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D734787781D09BC82ED2229 /* AIService.swift */; };
+		96EB8E9BD12D579CA4A94CB9 /* SmallInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30465B291D6BD30A783BD967 /* SmallInfoCard.swift */; };
+		9DA77E11D608746B5FDEC3A0 /* WorkshopFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6645955F45EDED26891E6BA4 /* WorkshopFeature.swift */; };
+		9EF1D4A63D705A2A798F8BB0 /* PhaseGateNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803F53C3929ACD5522FE094 /* PhaseGateNavigation.swift */; };
+		A35C586FD1494B9FBAE920CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C0C316F89D4523F61D5127 /* Assets.xcassets */; };
+		A8C8F020421D67EC21F82509 /* AdvancedStatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0455DDC116C90E620512D8F /* AdvancedStatCard.swift */; };
+		A9B292811ADD229D86BB748C /* EvolvingHexagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4A23B5F26C30803DA9388C /* EvolvingHexagon.swift */; };
+		AE28396391C045D566A5B862 /* NexusTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9603D56E8CFBE37C80EEFB /* NexusTerminal.swift */; };
+		B135ABC2E1DD72FBE8FB7D57 /* CBLModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726CB5E21AAC007A92FB05F /* CBLModels.swift */; };
+		B16F7C7C44780A5C4B999214 /* StreakCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7D034AAE2D45F8A8C9935 /* StreakCard.swift */; };
+		C5D9700EE7B573930B55351E /* SparkBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1E4A0A413AB2F9C948CC4A /* SparkBackground.swift */; };
+		D36FD78CFF24CEEDBF3824E9 /* SparkMeshBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A34F8C61653F70AA93274CD /* SparkMeshBackground.swift */; };
+		D9923CE222B759FC9108C173 /* SparkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EABB6E39AEE28D3C376834 /* SparkApp.swift */; };
+		DA8154A8FF8D232948423BA7 /* StepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A2490F1872D120B8D8C57 /* StepDetailView.swift */; };
+		E53365D7F747939A1E968B8B /* MissionBriefingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A77865206582ADA8EB1F915 /* MissionBriefingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0005C10F9EE652A11465F70F /* StreakCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StreakCard.swift; path = Features/Dashboard/StreakCard.swift; sourceTree = "<group>"; };
-		06B0D59A14F35B9285F226B5 /* WorkshopFeature.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WorkshopFeature.swift; path = Features/Dashboard/WorkshopFeature.swift; sourceTree = "<group>"; };
-		18A8778838F321FCFDC0A0E4 /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HistoryView.swift; path = Features/Dashboard/HistoryView.swift; sourceTree = "<group>"; };
-		37B62857C4618B4E51E9E8B1 /* SparkBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SparkBackground.swift; path = Core/DesignSystem/SparkBackground.swift; sourceTree = "<group>"; };
-		384FFFA7ABBF35A392EEB823 /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = Features/Dashboard/DashboardView.swift; sourceTree = "<group>"; };
-		3D74BAAE0FC6CFEB952C6EA6 /* XPProgressHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPProgressHeader.swift; path = Features/Dashboard/XPProgressHeader.swift; sourceTree = "<group>"; };
-		41305E78A5E58AFBA11D0F18 /* CBLModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CBLModels.swift; path = Data/Models/CBLModels.swift; sourceTree = "<group>"; };
-		48F6229F8519D200B15ADA21 /* Theme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Core/DesignSystem/Theme.swift; sourceTree = "<group>"; };
-		5CA4067A2EA15FA9B5AE62BF /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
-		6C761588E9A3A49E72DD5833 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6C830836536B181F21D4A509 /* PhaseGateNavigation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhaseGateNavigation.swift; path = Features/Canvas/PhaseGateNavigation.swift; sourceTree = "<group>"; };
-		799F5B9506E8C8BDF80B10D8 /* SparkMeshBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SparkMeshBackground.swift; path = Core/DesignSystem/SparkMeshBackground.swift; sourceTree = "<group>"; };
-		7BA9266C18618ECD3614C9C2 /* AdvancedStatCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdvancedStatCard.swift; path = Core/DesignSystem/AdvancedStatCard.swift; sourceTree = "<group>"; };
-		8097D7931D562CB69D178E6E /* SparkApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SparkApp.swift; path = App/SparkApp.swift; sourceTree = "<group>"; };
-		8FE1C2AFB75E8F52AEC855C7 /* SmallInfoCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SmallInfoCard.swift; path = Core/DesignSystem/SmallInfoCard.swift; sourceTree = "<group>"; };
-		9238D8919D18005602543528 /* SparkSplashScreenView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SparkSplashScreenView.swift; path = Features/Onboarding/SparkSplashScreenView.swift; sourceTree = "<group>"; };
-		A631B1A507298E4A22ECA8D8 /* NexusTerminal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NexusTerminal.swift; path = Features/Dashboard/NexusTerminal.swift; sourceTree = "<group>"; };
-		A6423CB0F35F0DD41E5A024F /* AIService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AIService.swift; path = Core/Services/AIService.swift; sourceTree = "<group>"; };
-		A76A20BF46A01A8A49C9C3AA /* StepDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StepDetailView.swift; path = Features/Canvas/StepDetailView.swift; sourceTree = "<group>"; };
-		B6B422992D7839D6AF388EC8 /* MissionBriefingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MissionBriefingView.swift; path = Features/Canvas/MissionBriefingView.swift; sourceTree = "<group>"; };
-		BC435A18FBD03576C7CB25B5 /* StepFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StepFeedback.swift; path = Core/Models/StepFeedback.swift; sourceTree = "<group>"; };
-		CC7A206C2791F79092BFCC6B /* EvolvingHexagon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EvolvingHexagon.swift; path = Core/DesignSystem/EvolvingHexagon.swift; sourceTree = "<group>"; };
-		D91D51572C8BD400FE7A1BB2 /* Spark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spark.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6273F61D5ABD9CE669A76C1 /* Workshop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Workshop.swift; path = Data/Models/Workshop.swift; sourceTree = "<group>"; };
-		EC93EBB69C45E2433C5967DB /* UserStats.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserStats.swift; path = Data/Models/UserStats.swift; sourceTree = "<group>"; };
-		F11CC917E044AEDFCBBD5EC9 /* EvolutionSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EvolutionSnapshot.swift; path = Data/Models/EvolutionSnapshot.swift; sourceTree = "<group>"; };
-		F1CDC7DBEEA1EACB59CC143D /* GlassCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassCard.swift; path = Core/DesignSystem/GlassCard.swift; sourceTree = "<group>"; };
+		0C1E4A0A413AB2F9C948CC4A /* SparkBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SparkBackground.swift; path = Core/DesignSystem/SparkBackground.swift; sourceTree = "<group>"; };
+		1726CB5E21AAC007A92FB05F /* CBLModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CBLModels.swift; path = Data/Models/CBLModels.swift; sourceTree = "<group>"; };
+		1A222521FD4B3196914DC66B /* XPProgressHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPProgressHeader.swift; path = Features/Dashboard/XPProgressHeader.swift; sourceTree = "<group>"; };
+		1BB7D034AAE2D45F8A8C9935 /* StreakCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StreakCard.swift; path = Features/Dashboard/StreakCard.swift; sourceTree = "<group>"; };
+		1C4A23B5F26C30803DA9388C /* EvolvingHexagon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EvolvingHexagon.swift; path = Core/DesignSystem/EvolvingHexagon.swift; sourceTree = "<group>"; };
+		25973E2F493BDEC68B12441A /* UserStats.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserStats.swift; path = Data/Models/UserStats.swift; sourceTree = "<group>"; };
+		2958FC827BA763D0AF336C21 /* Theme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Core/DesignSystem/Theme.swift; sourceTree = "<group>"; };
+		29F86D85AC334F9B6125C0B4 /* Workshop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Workshop.swift; path = Data/Models/Workshop.swift; sourceTree = "<group>"; };
+		30465B291D6BD30A783BD967 /* SmallInfoCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SmallInfoCard.swift; path = Core/DesignSystem/SmallInfoCard.swift; sourceTree = "<group>"; };
+		3A77865206582ADA8EB1F915 /* MissionBriefingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MissionBriefingView.swift; path = Features/Canvas/MissionBriefingView.swift; sourceTree = "<group>"; };
+		3CBA784F9D57D24A0C045127 /* GlassCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassCard.swift; path = Core/DesignSystem/GlassCard.swift; sourceTree = "<group>"; };
+		4A34F8C61653F70AA93274CD /* SparkMeshBackground.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SparkMeshBackground.swift; path = Core/DesignSystem/SparkMeshBackground.swift; sourceTree = "<group>"; };
+		5A9603D56E8CFBE37C80EEFB /* NexusTerminal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NexusTerminal.swift; path = Features/Dashboard/NexusTerminal.swift; sourceTree = "<group>"; };
+		645944D7E4A5E29FFD5D696C /* StepFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StepFeedback.swift; path = Core/Models/StepFeedback.swift; sourceTree = "<group>"; };
+		6645955F45EDED26891E6BA4 /* WorkshopFeature.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WorkshopFeature.swift; path = Features/Dashboard/WorkshopFeature.swift; sourceTree = "<group>"; };
+		66C0C316F89D4523F61D5127 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		7803F53C3929ACD5522FE094 /* PhaseGateNavigation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhaseGateNavigation.swift; path = Features/Canvas/PhaseGateNavigation.swift; sourceTree = "<group>"; };
+		7D734787781D09BC82ED2229 /* AIService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AIService.swift; path = Core/Services/AIService.swift; sourceTree = "<group>"; };
+		807BCA5D782256F021F27EFC /* CBLGuideService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CBLGuideService.swift; path = Core/Services/CBLGuideService.swift; sourceTree = "<group>"; };
+		8D12352495E5555A2283FD5E /* EvolutionSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EvolutionSnapshot.swift; path = Data/Models/EvolutionSnapshot.swift; sourceTree = "<group>"; };
+		B0EABB6E39AEE28D3C376834 /* SparkApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SparkApp.swift; path = App/SparkApp.swift; sourceTree = "<group>"; };
+		BDE328AC7FAA5D39E6F55D30 /* SparkSplashScreenView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SparkSplashScreenView.swift; path = Features/Onboarding/SparkSplashScreenView.swift; sourceTree = "<group>"; };
+		C2849E9427DF3F6B4F4292FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D1AC098A42EB54F13F4A32F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DA4A1AE0759440931F991280 /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = Features/Dashboard/DashboardView.swift; sourceTree = "<group>"; };
+		E0455DDC116C90E620512D8F /* AdvancedStatCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdvancedStatCard.swift; path = Core/DesignSystem/AdvancedStatCard.swift; sourceTree = "<group>"; };
+		E49A2490F1872D120B8D8C57 /* StepDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StepDetailView.swift; path = Features/Canvas/StepDetailView.swift; sourceTree = "<group>"; };
+		EE12BF403093C4D2CCC1E6F5 /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HistoryView.swift; path = Features/Dashboard/HistoryView.swift; sourceTree = "<group>"; };
+		F846C8D871700AB5326CAD58 /* Spark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C27B86CBB45F3C30E26F5863 /* Frameworks */ = {
+		8926ACF6A55B3D707C202045 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09C9B55999E783C4B8D124E1 /* Foundation.framework in Frameworks */,
+				249173353314F3C53F37A222 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0132840552DCFC15498EC4DF = {
+		20F4C31602180094ABB5ABCE /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
-				6DDB0D7ADD80FB72BCD4A6B0 /* Products */,
-				243B971B190D0F5EF4205FCE /* Frameworks */,
-				68595D91F39FDE8A8ECB2EEF /* Spark */,
-			);
-			sourceTree = "<group>";
-		};
-		10F31DA4B7B954ED6525D102 /* Canvas */ = {
-			isa = PBXGroup;
-			children = (
-				B6B422992D7839D6AF388EC8 /* MissionBriefingView.swift */,
-				A76A20BF46A01A8A49C9C3AA /* StepDetailView.swift */,
-				6C830836536B181F21D4A509 /* PhaseGateNavigation.swift */,
+				3A77865206582ADA8EB1F915 /* MissionBriefingView.swift */,
+				E49A2490F1872D120B8D8C57 /* StepDetailView.swift */,
+				7803F53C3929ACD5522FE094 /* PhaseGateNavigation.swift */,
 			);
 			name = Canvas;
 			sourceTree = "<group>";
 		};
-		1246A687B9EB900511610CE7 /* Features */ = {
+		264971D74ECF60F0F8B759D6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				10F31DA4B7B954ED6525D102 /* Canvas */,
-				FF3F2BDB203D9BE9232796BA /* Dashboard */,
-				1E36A1A0D53C8F8366FC4C35 /* Onboarding */,
-			);
-			name = Features;
-			sourceTree = "<group>";
-		};
-		140756B871CACB98AC692F7D /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				AE0A9B5A3B93B4023C6F80CA /* DesignSystem */,
-				9185E975B33417F971B31B45 /* Models */,
-				4D130E916911FD2D0FC7C2B3 /* Services */,
+				4B57EF6FDDD7A523DD850554 /* DesignSystem */,
+				821191FD71FF4C4D88B628CF /* Models */,
+				B8936E3A6C4B58E2E99D15A7 /* Services */,
 			);
 			name = Core;
 			sourceTree = "<group>";
 		};
-		1E36A1A0D53C8F8366FC4C35 /* Onboarding */ = {
+		3BA0A58DECAA3949CA3C36E8 = {
 			isa = PBXGroup;
 			children = (
-				9238D8919D18005602543528 /* SparkSplashScreenView.swift */,
+				7210F65C8A36C90FB9AE27CC /* Products */,
+				C56F927CBEB07D8C8FEC7146 /* Frameworks */,
+				EAE829756A207EE502FA6E6F /* Spark */,
 			);
-			name = Onboarding;
 			sourceTree = "<group>";
 		};
-		243B971B190D0F5EF4205FCE /* Frameworks */ = {
+		4AC8140EB895CD8512C5E311 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				38AA9C1965D52C331D6FD666 /* iOS */,
+				B0EABB6E39AEE28D3C376834 /* SparkApp.swift */,
 			);
-			name = Frameworks;
+			name = App;
 			sourceTree = "<group>";
 		};
-		38AA9C1965D52C331D6FD666 /* iOS */ = {
+		4B57EF6FDDD7A523DD850554 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				6C761588E9A3A49E72DD5833 /* Foundation.framework */,
+				1C4A23B5F26C30803DA9388C /* EvolvingHexagon.swift */,
+				3CBA784F9D57D24A0C045127 /* GlassCard.swift */,
+				30465B291D6BD30A783BD967 /* SmallInfoCard.swift */,
+				4A34F8C61653F70AA93274CD /* SparkMeshBackground.swift */,
+				2958FC827BA763D0AF336C21 /* Theme.swift */,
+				E0455DDC116C90E620512D8F /* AdvancedStatCard.swift */,
+				0C1E4A0A413AB2F9C948CC4A /* SparkBackground.swift */,
 			);
-			name = iOS;
+			name = DesignSystem;
 			sourceTree = "<group>";
 		};
-		4C930C6ABB02EF87ACB94AF8 /* Data */ = {
+		50AA53438D7CF0D89F78D6DA /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				BFB80D0E6B8445E7763B2D78 /* Models */,
+				20F4C31602180094ABB5ABCE /* Canvas */,
+				CF7A65C9F54801818A037C14 /* Dashboard */,
+				F91B3A69A560C54501420A2A /* Onboarding */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		5AA561BF933EE425F26D83FB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8062A70F94793CC1535521B3 /* Models */,
 			);
 			name = Data;
 			sourceTree = "<group>";
 		};
-		4D130E916911FD2D0FC7C2B3 /* Services */ = {
+		7210F65C8A36C90FB9AE27CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A6423CB0F35F0DD41E5A024F /* AIService.swift */,
+				F846C8D871700AB5326CAD58 /* Spark.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8062A70F94793CC1535521B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				25973E2F493BDEC68B12441A /* UserStats.swift */,
+				1726CB5E21AAC007A92FB05F /* CBLModels.swift */,
+				8D12352495E5555A2283FD5E /* EvolutionSnapshot.swift */,
+				29F86D85AC334F9B6125C0B4 /* Workshop.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		821191FD71FF4C4D88B628CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				645944D7E4A5E29FFD5D696C /* StepFeedback.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B3DB39F2DBB7D1226B02B690 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D1AC098A42EB54F13F4A32F9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		B8936E3A6C4B58E2E99D15A7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				807BCA5D782256F021F27EFC /* CBLGuideService.swift */,
+				7D734787781D09BC82ED2229 /* AIService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
 		};
-		68595D91F39FDE8A8ECB2EEF /* Spark */ = {
+		C56F927CBEB07D8C8FEC7146 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EC4578DC53AD29F85FF84416 /* App */,
-				140756B871CACB98AC692F7D /* Core */,
-				4C930C6ABB02EF87ACB94AF8 /* Data */,
-				1246A687B9EB900511610CE7 /* Features */,
-				9130174F59E1683151B07AF2 /* Resources */,
+				B3DB39F2DBB7D1226B02B690 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF7A65C9F54801818A037C14 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				DA4A1AE0759440931F991280 /* DashboardView.swift */,
+				1BB7D034AAE2D45F8A8C9935 /* StreakCard.swift */,
+				6645955F45EDED26891E6BA4 /* WorkshopFeature.swift */,
+				EE12BF403093C4D2CCC1E6F5 /* HistoryView.swift */,
+				1A222521FD4B3196914DC66B /* XPProgressHeader.swift */,
+				5A9603D56E8CFBE37C80EEFB /* NexusTerminal.swift */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		EAE829756A207EE502FA6E6F /* Spark */ = {
+			isa = PBXGroup;
+			children = (
+				4AC8140EB895CD8512C5E311 /* App */,
+				264971D74ECF60F0F8B759D6 /* Core */,
+				5AA561BF933EE425F26D83FB /* Data */,
+				50AA53438D7CF0D89F78D6DA /* Features */,
+				FE45E41BB28F6C973BF1B5ED /* Resources */,
 			);
 			name = Spark;
 			path = .;
 			sourceTree = "<group>";
 		};
-		6DDB0D7ADD80FB72BCD4A6B0 /* Products */ = {
+		F91B3A69A560C54501420A2A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				D91D51572C8BD400FE7A1BB2 /* Spark.app */,
+				BDE328AC7FAA5D39E6F55D30 /* SparkSplashScreenView.swift */,
 			);
-			name = Products;
+			name = Onboarding;
 			sourceTree = "<group>";
 		};
-		9130174F59E1683151B07AF2 /* Resources */ = {
+		FE45E41BB28F6C973BF1B5ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5CA4067A2EA15FA9B5AE62BF /* Assets.xcassets */,
+				66C0C316F89D4523F61D5127 /* Assets.xcassets */,
+				C2849E9427DF3F6B4F4292FF /* LaunchScreen.storyboard */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		9185E975B33417F971B31B45 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				BC435A18FBD03576C7CB25B5 /* StepFeedback.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		AE0A9B5A3B93B4023C6F80CA /* DesignSystem */ = {
-			isa = PBXGroup;
-			children = (
-				CC7A206C2791F79092BFCC6B /* EvolvingHexagon.swift */,
-				F1CDC7DBEEA1EACB59CC143D /* GlassCard.swift */,
-				8FE1C2AFB75E8F52AEC855C7 /* SmallInfoCard.swift */,
-				799F5B9506E8C8BDF80B10D8 /* SparkMeshBackground.swift */,
-				48F6229F8519D200B15ADA21 /* Theme.swift */,
-				7BA9266C18618ECD3614C9C2 /* AdvancedStatCard.swift */,
-				37B62857C4618B4E51E9E8B1 /* SparkBackground.swift */,
-			);
-			name = DesignSystem;
-			sourceTree = "<group>";
-		};
-		BFB80D0E6B8445E7763B2D78 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				EC93EBB69C45E2433C5967DB /* UserStats.swift */,
-				41305E78A5E58AFBA11D0F18 /* CBLModels.swift */,
-				F11CC917E044AEDFCBBD5EC9 /* EvolutionSnapshot.swift */,
-				E6273F61D5ABD9CE669A76C1 /* Workshop.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		EC4578DC53AD29F85FF84416 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				8097D7931D562CB69D178E6E /* SparkApp.swift */,
-			);
-			name = App;
-			sourceTree = "<group>";
-		};
-		FF3F2BDB203D9BE9232796BA /* Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-				384FFFA7ABBF35A392EEB823 /* DashboardView.swift */,
-				0005C10F9EE652A11465F70F /* StreakCard.swift */,
-				06B0D59A14F35B9285F226B5 /* WorkshopFeature.swift */,
-				18A8778838F321FCFDC0A0E4 /* HistoryView.swift */,
-				3D74BAAE0FC6CFEB952C6EA6 /* XPProgressHeader.swift */,
-				A631B1A507298E4A22ECA8D8 /* NexusTerminal.swift */,
-			);
-			name = Dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58D5C8A6A965DDE60255A955 /* Spark */ = {
+		D0BBDAD10BA722DD2086BD4A /* Spark */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 371570595F144950AFC6A4F2 /* Build configuration list for PBXNativeTarget "Spark" */;
+			buildConfigurationList = 1D9C0C94950A6808BFCBA96D /* Build configuration list for PBXNativeTarget "Spark" */;
 			buildPhases = (
-				C95E5F993E39EF1B996C925F /* Sources */,
-				C27B86CBB45F3C30E26F5863 /* Frameworks */,
-				0BD7B1C9A911C9AF582FAE70 /* Resources */,
+				9B9CBDC875C72BEF9E8005E3 /* Sources */,
+				8926ACF6A55B3D707C202045 /* Frameworks */,
+				0B9CEE59F1BDF04D50C30E41 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -256,20 +262,19 @@
 			);
 			name = Spark;
 			productName = Spark;
-			productReference = D91D51572C8BD400FE7A1BB2 /* Spark.app */;
+			productReference = F846C8D871700AB5326CAD58 /* Spark.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		82D77FEABF1DBD2A83C9FA22 /* Project object */ = {
+		673C8F30AAD95FE84B24C69B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 2640;
+				LastUpgradeCheck = 1600;
 			};
-			buildConfigurationList = FDAD4674B6795901BE75CFCF /* Build configuration list for PBXProject "Spark" */;
+			buildConfigurationList = 35C36E5C1B8CEBF390C4D9A6 /* Build configuration list for PBXProject "Spark" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -277,128 +282,70 @@
 				en,
 				Base,
 			);
-			mainGroup = 0132840552DCFC15498EC4DF;
-			productRefGroup = 6DDB0D7ADD80FB72BCD4A6B0 /* Products */;
+			mainGroup = 3BA0A58DECAA3949CA3C36E8;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7210F65C8A36C90FB9AE27CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58D5C8A6A965DDE60255A955 /* Spark */,
+				D0BBDAD10BA722DD2086BD4A /* Spark */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0BD7B1C9A911C9AF582FAE70 /* Resources */ = {
+		0B9CEE59F1BDF04D50C30E41 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35E7AD67FD5E1BF7CF7F0D02 /* Assets.xcassets in Resources */,
+				A35C586FD1494B9FBAE920CE /* Assets.xcassets in Resources */,
+				7C5EE4B6E364E9C043361FB3 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C95E5F993E39EF1B996C925F /* Sources */ = {
+		9B9CBDC875C72BEF9E8005E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E683CCD14114CC5AAB1A5BD2 /* SparkApp.swift in Sources */,
-				BDDA208AA816484CA806F66C /* EvolvingHexagon.swift in Sources */,
-				C109D6D78CF8E6A7EEC026F7 /* GlassCard.swift in Sources */,
-				B6CE60B7B9BF0D4BBFAC6FF6 /* SmallInfoCard.swift in Sources */,
-				9099AE397FEFFA0880114EA3 /* SparkMeshBackground.swift in Sources */,
-				B036CE883973CC0A8281B1A9 /* Theme.swift in Sources */,
-				4B6EFD23704114A7767753DA /* AdvancedStatCard.swift in Sources */,
-				FCCD3F25D0D101A80806A848 /* SparkBackground.swift in Sources */,
-				41FBA5EB95F45F2D87A80DD6 /* StepFeedback.swift in Sources */,
-				5F2E5FFAC410C9284B592DC4 /* AIService.swift in Sources */,
-				7BD01D4E5D23A2668FFE7893 /* UserStats.swift in Sources */,
-				FAA270926E720DAB4B5FC5D3 /* CBLModels.swift in Sources */,
-				6CF77EA85BCAE38812910BC8 /* EvolutionSnapshot.swift in Sources */,
-				9372D72FD5BAF58518E09BB8 /* Workshop.swift in Sources */,
-				EA52B2E2294D624BDD19F974 /* MissionBriefingView.swift in Sources */,
-				18C0537683DB37996F147266 /* StepDetailView.swift in Sources */,
-				3F2C17DB19ED0C65C74FA2E5 /* PhaseGateNavigation.swift in Sources */,
-				8D8F370C1AD5284CA1520ECE /* DashboardView.swift in Sources */,
-				43AF8129CC0871CF30049ADD /* StreakCard.swift in Sources */,
-				D0BC237E4CA1C90AB88979C8 /* WorkshopFeature.swift in Sources */,
-				3DA9680AA5CA5DF92F5863B9 /* HistoryView.swift in Sources */,
-				C3EC4E749A04F15EDD6B9442 /* XPProgressHeader.swift in Sources */,
-				37D3D7C93DED36C98B300F95 /* NexusTerminal.swift in Sources */,
-				E90B85BF2D8F5CAAF79DD0DA /* SparkSplashScreenView.swift in Sources */,
+				D9923CE222B759FC9108C173 /* SparkApp.swift in Sources */,
+				A9B292811ADD229D86BB748C /* EvolvingHexagon.swift in Sources */,
+				391AC88AF3B3C689623D1DD3 /* GlassCard.swift in Sources */,
+				96EB8E9BD12D579CA4A94CB9 /* SmallInfoCard.swift in Sources */,
+				D36FD78CFF24CEEDBF3824E9 /* SparkMeshBackground.swift in Sources */,
+				1B760609BF7D972470AD8591 /* Theme.swift in Sources */,
+				A8C8F020421D67EC21F82509 /* AdvancedStatCard.swift in Sources */,
+				C5D9700EE7B573930B55351E /* SparkBackground.swift in Sources */,
+				4AC9BE459774709F33DD120A /* StepFeedback.swift in Sources */,
+				89DCC5270921A05862BCD1AF /* CBLGuideService.swift in Sources */,
+				8F175EB8E7FA1F1027AA08AD /* AIService.swift in Sources */,
+				248138BFD348B186AC59B54E /* UserStats.swift in Sources */,
+				B135ABC2E1DD72FBE8FB7D57 /* CBLModels.swift in Sources */,
+				0B2B7ED4B657E393C5C49DB0 /* EvolutionSnapshot.swift in Sources */,
+				4C73453BED484FE8EADC1EB6 /* Workshop.swift in Sources */,
+				E53365D7F747939A1E968B8B /* MissionBriefingView.swift in Sources */,
+				DA8154A8FF8D232948423BA7 /* StepDetailView.swift in Sources */,
+				9EF1D4A63D705A2A798F8BB0 /* PhaseGateNavigation.swift in Sources */,
+				25D3ADBC9BEA2112A6237537 /* DashboardView.swift in Sources */,
+				B16F7C7C44780A5C4B999214 /* StreakCard.swift in Sources */,
+				9DA77E11D608746B5FDEC3A0 /* WorkshopFeature.swift in Sources */,
+				1DC000F58CF71500ABF93B96 /* HistoryView.swift in Sources */,
+				47E6E2EA3410FF46CF7D4928 /* XPProgressHeader.swift in Sources */,
+				AE28396391C045D566A5B862 /* NexusTerminal.swift in Sources */,
+				52F131E106099CD45228CAA2 /* SparkSplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		2F80CE63C52F29F8AE60C061 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGNING_ALLOWED = YES;
-				CODE_SIGNING_REQUIRED = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_CFBundleDisplayName = Spark;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_ipad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.spark.app.concept;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		8D1B19805331E3E11FA4F58A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGNING_ALLOWED = YES;
-				CODE_SIGNING_REQUIRED = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_CFBundleDisplayName = Spark;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_ipad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.spark.app.concept;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		8D2CA198B6C1C32E18D8D5A9 /* Debug */ = {
+		32CBEFC13191471ECDADD4BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -429,12 +376,120 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		4B554EC4146627374B4F806A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PH7ZFXKNZC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_CFBundleDisplayName = Spark;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_ipad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spark.app.concept;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		70014E70F31946866F1FFBB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PH7ZFXKNZC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_CFBundleDisplayName = Spark;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_ipad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spark.app.concept;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A3C6599CCCBD1C9D3A711574 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -453,94 +508,34 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		BCC8A01C34508AC18B5AAAE4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = PH7ZFXKNZC;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		371570595F144950AFC6A4F2 /* Build configuration list for PBXNativeTarget "Spark" */ = {
+		1D9C0C94950A6808BFCBA96D /* Build configuration list for PBXNativeTarget "Spark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D1B19805331E3E11FA4F58A /* Release */,
-				2F80CE63C52F29F8AE60C061 /* Debug */,
+				70014E70F31946866F1FFBB7 /* Release */,
+				4B554EC4146627374B4F806A /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FDAD4674B6795901BE75CFCF /* Build configuration list for PBXProject "Spark" */ = {
+		35C36E5C1B8CEBF390C4D9A6 /* Build configuration list for PBXProject "Spark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D2CA198B6C1C32E18D8D5A9 /* Debug */,
-				BCC8A01C34508AC18B5AAAE4 /* Release */,
+				A3C6599CCCBD1C9D3A711574 /* Debug */,
+				32CBEFC13191471ECDADD4BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 82D77FEABF1DBD2A83C9FA22 /* Project object */;
+	rootObject = 673C8F30AAD95FE84B24C69B /* Project object */;
 }

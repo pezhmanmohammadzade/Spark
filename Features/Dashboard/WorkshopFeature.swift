@@ -357,7 +357,7 @@ public struct WorkshopPortalView: View {
             .transition(.move(edge: .trailing).combined(with: .opacity))
             
         case .transmission:
-            VStack(alignment: .leading, spacing: 30) {
+            VStack(alignment: .leading, spacing: 24) {
                 HStack {
                     Text("TRANSMISSION \(transmissionIndex + 1)/\(workshop.guidingCoreSteps.count)")
                         .font(SparkTheme.Typography.micro)
@@ -368,14 +368,21 @@ public struct WorkshopPortalView: View {
                         .frame(width: 80)
                 }
                 
-                Text(workshop.guidingCoreSteps[transmissionIndex])
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.leading)
-                    .minimumScaleFactor(0.5)
-                    .frame(maxHeight: .infinity)
-                    .id("transmission_\(transmissionIndex)")
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                let stepContent = workshop.guidingCoreSteps[transmissionIndex]
+                
+                if stepContent.contains("TEACHING:") {
+                    TeachingTransmissionView(content: stepContent)
+                        .id("teaching_\(transmissionIndex)")
+                } else if stepContent.contains("TACTIC:") {
+                    TacticTransmissionView(content: stepContent)
+                        .id("tactic_\(transmissionIndex)")
+                } else if stepContent.contains("CORE:") {
+                    CoreTransmissionView(content: stepContent)
+                        .id("core_\(transmissionIndex)")
+                } else {
+                    DefaultTransmissionView(content: stepContent)
+                        .id("default_\(transmissionIndex)")
+                }
             }
             
         case .challenge:
@@ -443,6 +450,11 @@ public struct WorkshopPortalView: View {
                             .background(Capsule().fill(Color.white))
                     }
                     .padding(.top, 20)
+                }
+                
+                if !workshop.masteryBadge.isEmpty && !isError {
+                    MasteryUnlockCard(badge: workshop.masteryBadge)
+                        .padding(.top, 20)
                 }
             }
             .transition(.scale.combined(with: .opacity))
@@ -685,6 +697,169 @@ public struct WorkshopArchiveView: View {
             }
         }
         try? modelContext.save()
+    }
+}
+
+// MARK: - Interactive Transmission Views
+
+struct TeachingTransmissionView: View {
+    let content: String
+    @State private var visibleText: String = ""
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Image(systemName: "lightbulb.fill")
+                        .foregroundColor(SparkTheme.Colors.xpElectric)
+                    Text("SPARK_TEACHING")
+                        .font(SparkTheme.Typography.micro)
+                        .foregroundColor(SparkTheme.Colors.xpElectric)
+                }
+                
+                Text(visibleText)
+                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                    .foregroundColor(.white)
+                    .lineSpacing(6)
+            }
+            .padding(.top, 40)
+        }
+        .onAppear {
+            animateText()
+        }
+    }
+    
+    private func animateText() {
+        let full = content.replacingOccurrences(of: "TEACHING:", with: "").trimmingCharacters(in: .whitespaces)
+        var current = ""
+        _ = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
+            if current.count < full.count {
+                let index = full.index(full.startIndex, offsetBy: current.count)
+                current.append(full[index])
+                visibleText = current
+            } else {
+                timer.invalidate()
+            }
+        }
+    }
+}
+
+struct TacticTransmissionView: View {
+    let content: String
+    @State private var isRevealed = false
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            HStack {
+                Image(systemName: "hammer.fill")
+                    .foregroundColor(.orange)
+                Text("TACTICAL_MOVE")
+                    .font(SparkTheme.Typography.micro)
+                    .foregroundColor(.orange)
+            }
+            
+            Text("TAP TO REVEAL STRATEGY")
+                .font(SparkTheme.Typography.body)
+                .foregroundColor(.white.opacity(0.4))
+                .italic()
+            
+            Button(action: { 
+                withAnimation(.spring()) { isRevealed.toggle() }
+                HapticManager.shared.triggerSelection()
+            }) {
+                GlassCard {
+                    Text(content.replacingOccurrences(of: "TACTIC:", with: "").trimmingCharacters(in: .whitespaces))
+                        .font(.system(size: 22, weight: .semibold, design: .rounded))
+                        .foregroundColor(.white)
+                        .blur(radius: isRevealed ? 0 : 12)
+                        .scaleEffect(isRevealed ? 1 : 0.95)
+                        .overlay {
+                            if !isRevealed {
+                                Image(systemName: "eye.slash.fill")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.white.opacity(0.3))
+                            }
+                        }
+                }
+            }
+            .buttonStyle(.plain)
+            
+            if isRevealed {
+                Text("DEPLOY THIS TACTIC IMMEDIATELY TO ACCELERATE EVOLUTION.")
+                    .font(.system(size: 10, weight: .black))
+                    .foregroundColor(SparkTheme.Colors.act)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+            }
+        }
+        .padding(.top, 40)
+    }
+}
+
+struct CoreTransmissionView: View {
+    let content: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            HStack {
+                Image(systemName: "shield.fill")
+                    .foregroundColor(SparkTheme.Colors.act)
+                Text("THE_CORE_TRUTH")
+                    .font(SparkTheme.Typography.micro)
+                    .foregroundColor(SparkTheme.Colors.act)
+            }
+            
+            Text(content.replacingOccurrences(of: "CORE:", with: "").trimmingCharacters(in: .whitespaces))
+                .font(.system(size: 32, weight: .black, design: .rounded))
+                .foregroundColor(.white)
+                .padding(30)
+                .background {
+                    RoundedRectangle(cornerRadius: 24)
+                        .fill(SparkTheme.Colors.act.opacity(0.1))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 24)
+                                .stroke(SparkTheme.Colors.act.opacity(0.3), lineWidth: 2)
+                        }
+                }
+                .symbolEffect(.pulse)
+        }
+        .padding(.top, 40)
+    }
+}
+
+struct DefaultTransmissionView: View {
+    let content: String
+    var body: some View {
+        Text(content)
+            .font(.system(size: 28, weight: .bold, design: .rounded))
+            .foregroundColor(.white)
+            .padding(.top, 40)
+    }
+}
+
+struct MasteryUnlockCard: View {
+    let badge: String
+    
+    var body: some View {
+        GlassCard {
+            VStack(spacing: 16) {
+                HStack {
+                    Image(systemName: "trophy.fill")
+                    Text("MASTERY_UNLOCKED")
+                }
+                .font(SparkTheme.Typography.micro)
+                .foregroundColor(SparkTheme.Colors.levelGold)
+                
+                Text(badge.replacingOccurrences(of: "_", with: " "))
+                    .font(SparkTheme.Typography.title(size: 20))
+                    .foregroundColor(.white)
+                
+                Text("SKILL REGISTERED IN NEXUS ARCHIVE")
+                    .font(.system(size: 8, weight: .black))
+                    .foregroundColor(.white.opacity(0.4))
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+        }
     }
 }
 

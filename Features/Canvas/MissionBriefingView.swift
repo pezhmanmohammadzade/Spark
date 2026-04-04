@@ -31,7 +31,7 @@ public struct MissionBriefingView: View {
                             .foregroundColor(.white.opacity(0.6))
                             .tracking(4)
                     }
-                    .padding(.top, 40)
+                    .padding(.top, geo.safeAreaInsets.top > 0 ? geo.safeAreaInsets.top : 20)
                     
                     // Project Title
                     Text(project.title.uppercased())

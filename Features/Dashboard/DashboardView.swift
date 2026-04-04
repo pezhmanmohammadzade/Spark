@@ -83,7 +83,7 @@ public struct DashboardView: View {
                                             .background(Circle().fill(Color.white.opacity(0.1)))
                                     }
                                 }
-                                .padding(.top, 20)
+                                .padding(.top, geo.safeAreaInsets.top > 0 ? geo.safeAreaInsets.top : 20)
                                 
                                 NexusMasteryBanner(
                                     completedCount: workshops.filter { $0.isCompleted }.count,
@@ -106,6 +106,10 @@ public struct DashboardView: View {
                                 // AI WORKSHOP SCHEDULE
                                 WorkshopScheduleSection()
                                     .padding(.bottom, 8)
+                                
+                                // SKILL MASTERY SECTION
+                                SkillMasterySection()
+                                    .padding(.bottom, 16)
                                 
                                 // Bento Grid
                                 LazyVGrid(columns: columns, spacing: 16) {
@@ -308,7 +312,77 @@ struct NexusMasteryBanner: View {
     }
 }
 
-// MARK: - Spark Components
+// MARK: - Skill Mastery Section
+
+struct SkillMasterySection: View {
+    @Query private var workshops: [Workshop]
+    
+    var masteredWorkshops: [Workshop] {
+        workshops.filter { $0.isCompleted && !$0.masteryBadge.isEmpty }
+    }
+    
+    var body: some View {
+        if !masteredWorkshops.isEmpty {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
+                    Image(systemName: "medal.fill")
+                        .foregroundColor(SparkTheme.Colors.levelGold)
+                    Text("YOUR_SKILL_MASTERY")
+                        .font(SparkTheme.Typography.micro)
+                        .foregroundColor(.white.opacity(0.6))
+                        .tracking(2)
+                }
+                .padding(.horizontal, 4)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(masteredWorkshops) { workshop in
+                            MasteryBadgeCard(workshop: workshop)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct MasteryBadgeCard: View {
+    let workshop: Workshop
+    
+    var body: some View {
+        VStack(alignment: .center, spacing: 8) {
+            ZStack {
+                Circle()
+                    .fill(SparkTheme.Colors.levelGold.opacity(0.1))
+                    .frame(width: 60, height: 60)
+                
+                Image(systemName: workshop.topicIcon)
+                    .font(.title2)
+                    .foregroundColor(SparkTheme.Colors.levelGold)
+            }
+            .overlay {
+                Circle()
+                    .stroke(SparkTheme.Colors.levelGold.opacity(0.3), lineWidth: 1)
+            }
+            
+            Text(workshop.masteryBadge.replacingOccurrences(of: "_", with: " "))
+                .font(.system(size: 10, weight: .black))
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .frame(width: 80)
+        }
+        .padding(.vertical, 16)
+        .padding(.horizontal, 12)
+        .background {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.ultraThinMaterial)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                }
+        }
+    }
+}
 
 struct SparkTacticalFeed: View {
     @State private var currentQuote: String = AIService.shared.getRandomSparkQuote()

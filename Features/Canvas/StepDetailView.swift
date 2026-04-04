@@ -70,20 +70,86 @@ public struct StepDetailView: View {
     }
     
     private var inputPhase: some View {
-        GlassCard {
-            VStack(alignment: .leading, spacing: 20) {
-                Text(AIService.shared.generateSocraticQuestion(for: step.type))
-                    .font(.headline)
-                    .italic()
-                    .foregroundColor(.white.opacity(0.9))
-                    .lineSpacing(4)
+        VStack(spacing: 24) {
+            // GUIDING CORE (TEACHING MODAL)
+            guidingCoreSection
+            
+            GlassCard {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text(AIService.shared.generateSocraticQuestion(for: step.type))
+                        .font(.headline)
+                        .italic()
+                        .foregroundColor(.white.opacity(0.9))
+                        .lineSpacing(4)
+                    
+                    TextField("Input your evolution here...", text: $inputContent, axis: .vertical)
+                        .font(.body)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 16).fill(Color.white.opacity(0.05)))
+                        .lineLimit(5...10)
+                }
+            }
+        }
+    }
+    
+    private var guidingCoreSection: some View {
+        let guide = CBLGuideService.shared.guide(for: step.type)
+        return GlassCard {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Image(systemName: guide.icon)
+                        .foregroundColor(SparkTheme.Colors.xpElectric)
+                    Text("SPARK GUIDING CORE: \(guide.title)")
+                        .font(SparkTheme.Typography.micro)
+                        .foregroundColor(SparkTheme.Colors.xpElectric)
+                    Spacer()
+                }
                 
-                TextField("Input your evolution here...", text: $inputContent, axis: .vertical)
-                    .font(.body)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 16).fill(Color.white.opacity(0.05)))
-                    .lineLimit(5...10)
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(guide.definition)
+                        .font(SparkTheme.Typography.body)
+                        .foregroundColor(.white)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    HStack(alignment: .top, spacing: 12) {
+                        Image(systemName: "bullseye")
+                            .foregroundColor(SparkTheme.Colors.act)
+                            .font(.caption)
+                        Text(guide.strategicGoal)
+                            .font(.caption)
+                            .foregroundColor(.white.opacity(0.7))
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("SUCCESS_CRITERIA:")
+                            .font(.system(size: 8, weight: .black))
+                            .foregroundColor(.white.opacity(0.4))
+                        
+                        ForEach(guide.successCriteria, id: \.self) { criteria in
+                            HStack(alignment: .top, spacing: 8) {
+                                Text("•")
+                                    .foregroundColor(SparkTheme.Colors.act)
+                                Text(criteria)
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.white.opacity(0.9))
+                            }
+                        }
+                    }
+                    
+                    HStack(spacing: 8) {
+                        Image(systemName: "exclamationmark.shield.fill")
+                            .foregroundColor(SparkTheme.Colors.streakFlame)
+                            .font(.caption)
+                        Text(guide.pitfall)
+                            .font(.system(size: 10, weight: .bold))
+                            .foregroundColor(SparkTheme.Colors.streakFlame)
+                    }
+                    .padding(10)
+                    .background(SparkTheme.Colors.streakFlame.opacity(0.1))
+                    .cornerRadius(8)
+                }
             }
         }
     }

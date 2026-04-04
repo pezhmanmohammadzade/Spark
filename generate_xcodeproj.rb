@@ -36,12 +36,14 @@ end
   add_files_recursively(main_group, folder, target)
 end
 
-# Add resources (Assets)
-Dir.glob("Resources/**/*.xcassets").each do |asset_path|
-  file_dir = File.dirname(asset_path)
-  target_group = main_group.find_subpath(file_dir, true)
-  asset_ref = target_group.new_file(File.expand_path(asset_path))
-  target.resources_build_phase.add_file_reference(asset_ref)
+# Add resources (Assets, Storyboards)
+['Resources/**/*.xcassets', 'Resources/**/*.storyboard'].each do |pattern|
+  Dir.glob(pattern).each do |asset_path|
+    file_dir = File.dirname(asset_path)
+    target_group = main_group.find_subpath(file_dir, true)
+    asset_ref = target_group.new_file(File.expand_path(asset_path))
+    target.resources_build_phase.add_file_reference(asset_ref)
+  end
 end
 
 # Build Settings Tuning

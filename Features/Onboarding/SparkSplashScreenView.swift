@@ -67,7 +67,7 @@ public struct SparkSplashScreenView: View {
                 Spacer()
             }
             .padding(30)
-            .padding(.top, 40)
+            .safeAreaPadding(.top)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(
                 LinearGradient(colors: [.black.opacity(0.4), .clear], startPoint: .topLeading, endPoint: .bottomTrailing)

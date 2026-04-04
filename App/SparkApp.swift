@@ -37,6 +37,7 @@ struct SparkApp: App {
                     .zIndex(1)
                 }
             }
+            .ignoresSafeArea()
             .preferredColorScheme(.dark)
         }
         .modelContainer(sharedModelContainer)
