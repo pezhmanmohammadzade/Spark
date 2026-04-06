@@ -72,7 +72,7 @@ public struct WorkshopScheduleSection: View {
     }
     
     private func seedWorkshopsIfNeeded() {
-        let seeds = Workshop.seedWorkshops
+        let seeds = SeedDataProvider.seedWorkshops
         for seed in seeds {
             let title = seed.title
             let descriptor = FetchDescriptor<Workshop>(predicate: #Predicate { $0.title == title })
@@ -688,7 +688,7 @@ public struct WorkshopArchiveView: View {
     }
     
     private func seedWorkshopsIfNeeded() {
-        let seeds = Workshop.seedWorkshops
+        let seeds = SeedDataProvider.seedWorkshops
         for seed in seeds {
             let title = seed.title
             let descriptor = FetchDescriptor<Workshop>(predicate: #Predicate { $0.title == title })

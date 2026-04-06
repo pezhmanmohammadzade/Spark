@@ -28,6 +28,8 @@ public struct DashboardView: View {
     @State private var navigatedProject: CBLProject? // Programmatic navigation trigger
     @State private var briefingProject: CBLProject? // Project currently being briefed
     @State private var showHistory = false
+    @State private var showTimeline = false
+    @State private var showCoach = false
     @Namespace private var heroNamespace // Matched Geometry
     
     private var totalInsights: Int {
@@ -70,7 +72,27 @@ public struct DashboardView: View {
                                             .font(.system(size: 24, weight: .black, design: .rounded))
                                             .foregroundColor(.white)
                                     }
-                                    Spacer()
+                                    Button(action: { 
+                                        HapticManager.shared.triggerSelection()
+                                        showTimeline = true 
+                                    }) {
+                                        Image(systemName: "chart.xyaxis.line")
+                                            .font(.title3.bold())
+                                            .foregroundColor(.white)
+                                            .frame(width: 44, height: 44)
+                                            .background(Circle().fill(Color.white.opacity(0.1)))
+                                    }
+                                    
+                                    Button(action: { 
+                                        HapticManager.shared.triggerSelection()
+                                        showCoach = true 
+                                    }) {
+                                        Image(systemName: "brain.head.profile")
+                                            .font(.title3.bold())
+                                            .foregroundColor(.white)
+                                            .frame(width: 44, height: 44)
+                                            .background(Circle().fill(Color.white.opacity(0.1)))
+                                    }
                                     
                                     Button(action: { 
                                         HapticManager.shared.triggerSelection()
@@ -177,6 +199,12 @@ public struct DashboardView: View {
             }
             .fullScreenCover(isPresented: $showHistory) {
                 HistoryView()
+            }
+            .fullScreenCover(isPresented: $showTimeline) {
+                TimelineView()
+            }
+            .fullScreenCover(isPresented: $showCoach) {
+                CoachView()
             }
             .navigationDestination(item: $navigatedProject) { (p: CBLProject) in
                 PhaseGateNavigation(project: p)

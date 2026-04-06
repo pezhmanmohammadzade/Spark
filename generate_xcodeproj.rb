@@ -32,7 +32,7 @@ def add_files_recursively(main_group, base_folder, target)
 end
 
 # Add our core folders
-['App', 'Core', 'Data', 'Features'].each do |folder|
+['App', 'Core', 'Data', 'Features', 'Services'].each do |folder|
   add_files_recursively(main_group, folder, target)
 end
 

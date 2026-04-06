@@ -28,6 +28,7 @@ public struct SparkMeshBackground: View {
                 drawBlob(context: context, size: size, color: Color(red: 0, green: 0.8, blue: 1.0), offset: CGPoint(x: sin(t * 0.9) * 80, y: cos(t * 0.6) * 90), scale: 1.0)
             }
             .blur(radius: 80)
+            .drawingGroup()
             .ignoresSafeArea()
             
             // Particle Layer (Touch Responsive)

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D0BBDAD10BA722DD2086BD4A"
+               BlueprintIdentifier = "D2BEAD69AED55EB0CC6E129A"
                BuildableName = "Spark.app"
                BlueprintName = "Spark"
                ReferencedContainer = "container:Spark.xcodeproj">
@@ -30,7 +30,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D0BBDAD10BA722DD2086BD4A"
+            BlueprintIdentifier = "D2BEAD69AED55EB0CC6E129A"
             BuildableName = "Spark.app"
             BlueprintName = "Spark"
             ReferencedContainer = "container:Spark.xcodeproj">
@@ -53,7 +53,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D0BBDAD10BA722DD2086BD4A"
+            BlueprintIdentifier = "D2BEAD69AED55EB0CC6E129A"
             BuildableName = "Spark.app"
             BlueprintName = "Spark"
             ReferencedContainer = "container:Spark.xcodeproj">
@@ -70,7 +70,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D0BBDAD10BA722DD2086BD4A"
+            BlueprintIdentifier = "D2BEAD69AED55EB0CC6E129A"
             BuildableName = "Spark.app"
             BlueprintName = "Spark"
             ReferencedContainer = "container:Spark.xcodeproj">
