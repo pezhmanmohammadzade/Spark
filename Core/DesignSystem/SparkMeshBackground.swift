@@ -22,10 +22,12 @@ public struct SparkMeshBackground: View {
                 _ = size.width
                 _ = size.height
                 
-                // Drawing 4 vibrant "liquid" blobs
+                // Drawing vibrant "liquid" blobs
                 drawBlob(context: context, size: size, color: .blue, offset: CGPoint(x: sin(t * 0.5) * 100, y: cos(t * 0.8) * 150), scale: 1.2)
                 drawBlob(context: context, size: size, color: .purple, offset: CGPoint(x: cos(t * 0.7) * 120, y: sin(t * 0.5) * 100), scale: 1.5)
                 drawBlob(context: context, size: size, color: Color(red: 0, green: 0.8, blue: 1.0), offset: CGPoint(x: sin(t * 0.9) * 80, y: cos(t * 0.6) * 90), scale: 1.0)
+                // 4th deep teal blob for extra depth
+                drawBlob(context: context, size: size, color: Color(red: 0.0, green: 0.55, blue: 0.65), offset: CGPoint(x: cos(t * 0.4) * 140, y: sin(t * 0.35) * 170), scale: 2.0)
             }
             .blur(radius: 80)
             .drawingGroup()
@@ -34,6 +36,11 @@ public struct SparkMeshBackground: View {
             // Particle Layer (Touch Responsive)
             ParticleView(touchPoint: touchPoint, isTouching: isTouching)
                 .ignoresSafeArea()
+            
+            // Floating star-dot depth layer
+            StarFieldLayer()
+                .ignoresSafeArea()
+                .opacity(0.7)
             
             // Grain Texture
             Rectangle()

@@ -30,7 +30,6 @@ public struct DashboardView: View {
     @State private var showHistory = false
     @State private var showTimeline = false
     @State private var showCoach = false
-    @Namespace private var heroNamespace // Matched Geometry
     
     private var totalInsights: Int {
         projects.flatMap { $0.steps }.filter { !$0.aiInsight.isEmpty }.count
@@ -58,51 +57,45 @@ public struct DashboardView: View {
                     VStack(spacing: 0) {
                         ScrollView(showsIndicators: false) {
                             VStack(alignment: .leading, spacing: 24) {
-                                // Brand Header
-                                HStack(spacing: 12) {
-                                    // Using system image since AppLogo might be missing in some builds
-                                    Image(systemName: "sparkles")
-                                        .font(.title2)
-                                        .foregroundColor(SparkTheme.Colors.xpElectric)
-                                        .frame(width: 44, height: 44)
-                                        .background(Circle().fill(Color.white.opacity(0.1)))
-                                    
-                                    VStack(alignment: .leading, spacing: 0) {
-                                        Text("SPARK")
-                                            .font(.system(size: 24, weight: .black, design: .rounded))
-                                            .foregroundColor(.white)
-                                    }
-                                    Button(action: { 
-                                        HapticManager.shared.triggerSelection()
-                                        showTimeline = true 
-                                    }) {
-                                        Image(systemName: "chart.xyaxis.line")
-                                            .font(.title3.bold())
-                                            .foregroundColor(.white)
-                                            .frame(width: 44, height: 44)
-                                            .background(Circle().fill(Color.white.opacity(0.1)))
-                                    }
-                                    
-                                    Button(action: { 
-                                        HapticManager.shared.triggerSelection()
-                                        showCoach = true 
-                                    }) {
-                                        Image(systemName: "brain.head.profile")
-                                            .font(.title3.bold())
-                                            .foregroundColor(.white)
-                                            .frame(width: 44, height: 44)
-                                            .background(Circle().fill(Color.white.opacity(0.1)))
-                                    }
-                                    
-                                    Button(action: { 
-                                        HapticManager.shared.triggerSelection()
-                                        showHistory = true 
-                                    }) {
-                                        Image(systemName: "clock.arrow.circlepath")
-                                            .font(.title3.bold())
-                                            .foregroundColor(.white)
-                                            .frame(width: 44, height: 44)
-                                            .background(Circle().fill(Color.white.opacity(0.1)))
+                                // Dynamic Island Brand Header
+                                GlassCard(cornerRadius: 32) {
+                                    HStack(spacing: 0) {
+                                        // Brand 3D Orb and Title
+                                        HStack(spacing: 10) {
+                                            Spark3DOrb(size: 32, color: SparkTheme.Colors.xpElectric)
+                                                .shadow(color: SparkTheme.Colors.xpElectric.opacity(0.8), radius: 8)
+                                            
+                                            Text("SPARK")
+                                                .font(.system(size: 20, weight: .black, design: .rounded))
+                                                .foregroundStyle(
+                                                    LinearGradient(
+                                                        colors: [.white, .white.opacity(0.8)],
+                                                        startPoint: .top,
+                                                        endPoint: .bottom
+                                                    )
+                                                )
+                                                .shadow(color: .white.opacity(0.2), radius: 4)
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        // Action Indicators
+                                        HStack(spacing: 12) {
+                                            HeaderActionButton(icon: "chart.xyaxis.line", color: .blue) {
+                                                HapticManager.shared.triggerSelection()
+                                                showTimeline = true
+                                            }
+                                            
+                                            HeaderActionButton(icon: "brain.head.profile", color: .purple) {
+                                                HapticManager.shared.triggerSelection()
+                                                showCoach = true
+                                            }
+                                            
+                                            HeaderActionButton(icon: "clock.arrow.circlepath", color: .orange) {
+                                                HapticManager.shared.triggerSelection()
+                                                showHistory = true
+                                            }
+                                        }
                                     }
                                 }
                                 .padding(.top, geo.safeAreaInsets.top > 0 ? geo.safeAreaInsets.top : 20)
@@ -141,13 +134,10 @@ public struct DashboardView: View {
                                             briefingProject = activeProject
                                         }) {
                                             HeroBentoCard(project: activeProject)
-                                                .matchedGeometryEffect(id: "hero_card", in: heroNamespace)
                                         }
                                         .buttonStyle(.plain)
-                                        .gridCellColumns(2)
                                     } else {
                                         NewProjectBento()
-                                            .gridCellColumns(2)
                                     }
                                     
                                     StreakCard(streak: currentUserStats.dailyStreak)
@@ -167,7 +157,6 @@ public struct DashboardView: View {
                                         color: .green,
                                         trend: projects.count > 0 ? "\(Int(Double(totalTargetsMET)/Double(max(projects.count, 1)) * 100))%" : nil
                                     )
-                                    .gridCellColumns(2)
                                 }
                                 
                                 Spacer(minLength: 140)
@@ -236,7 +225,42 @@ public struct DashboardView: View {
             .background(Capsule().fill(Color.white))
             .foregroundColor(.black)
             .shadow(color: .white.opacity(0.3), radius: 15)
+            .shimmerEffect()
         }
+    }
+}
+
+// MARK: - Header Action Button
+struct HeaderActionButton: View {
+    let icon: String
+    let color: Color
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            ZStack {
+                Circle()
+                    .fill(color.opacity(0.15))
+                    .frame(width: 40, height: 40)
+                
+                Circle()
+                    .strokeBorder(
+                        LinearGradient(
+                            colors: [color.opacity(0.6), .clear, color.opacity(0.2)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1
+                    )
+                    .frame(width: 40, height: 40)
+                
+                Image(systemName: icon)
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundColor(.white)
+                    .shadow(color: color.opacity(0.5), radius: 4)
+            }
+        }
+        .buttonStyle(.plain)
     }
 }
 
@@ -452,39 +476,73 @@ struct HeroBentoCard: View {
     let project: CBLProject
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack {
-                Text("CURRENT CHALLENGE")
-                    .font(SparkTheme.Typography.micro)
-                    .foregroundColor(SparkTheme.Colors.xpElectric)
-                    .tracking(2)
-                Spacer()
-                // Active Pulse for Spark's Insight
-                Image(systemName: "brain.head.profile")
-                    .font(.caption)
-                    .foregroundColor(SparkTheme.Colors.xpElectric)
-                    .symbolEffect(.pulse)
-            }
-            
-            Text(project.title)
-                .font(SparkTheme.Typography.bentoHeader)
-                .foregroundColor(.white)
-                .lineLimit(2)
-            
-            HStack {
-                Capsule()
-                    .fill(SparkTheme.Colors.engage.opacity(0.2))
-                    .frame(width: 80, height: 24)
-                    .overlay(Text("ADVENTURE").font(.system(size: 8, weight: .bold)).foregroundColor(SparkTheme.Colors.engage))
+        GlassCard {
+            ZStack {
+                // Decorative blurred glow behind the card
+                Ellipse()
+                    .fill(SparkTheme.Colors.xpElectric.opacity(0.18))
+                    .frame(width: 120, height: 60)
+                    .blur(radius: 20)
+                    .offset(x: -40, y: -40)
+                    .allowsHitTesting(false)
                 
-                Spacer()
+                // Neural circuit background decoration
+                NeuralCircuitBackground(color: SparkTheme.Colors.xpElectric, opacity: 0.09)
+                    .allowsHitTesting(false)
                 
-                Text("\(Int(Double(project.steps.filter { $0.isCompleted }.count) / Double(max(project.steps.count, 1)) * 100))%")
-                    .font(SparkTheme.Typography.micro)
-                    .foregroundColor(.white.opacity(0.6))
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .top) {
+                        ZStack {
+                            Spark3DOrb(size: 48, color: SparkTheme.Colors.xpElectric)
+                            Image(systemName: "brain.head.profile")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(.white)
+                                .shadow(radius: 4)
+                        }
+                        .frame(width: 48, height: 48)
+                        
+                        Spacer()
+                        
+                        Text("ADVENTURE")
+                            .font(.system(size: 9, weight: .bold, design: .rounded))
+                            .foregroundColor(SparkTheme.Colors.engage)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(SparkTheme.Colors.engage.opacity(0.2))
+                            .cornerRadius(8)
+                    }
+                    
+                    Spacer(minLength: 8)
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(project.title)
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .foregroundColor(.white)
+                            .minimumScaleFactor(0.7)
+                            .lineLimit(2)
+                            .fixedSize(horizontal: false, vertical: true)
+                        
+                        HStack(spacing: 6) {
+                            Text("CURRENT CHALLENGE")
+                                .font(SparkTheme.Typography.micro)
+                                .foregroundColor(SparkTheme.Colors.xpElectric)
+                                .tracking(1)
+                                .minimumScaleFactor(0.6)
+                                .lineLimit(1)
+                            
+                            Spacer()
+                            
+                            Text("\(Int(Double(project.steps.filter { $0.isCompleted }.count) / Double(max(project.steps.count, 1)) * 100))%")
+                                .font(.system(size: 10, weight: .bold, design: .rounded))
+                                .foregroundColor(.white.opacity(0.8))
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
-        .bentoStyle()
+        .frame(height: 160)
+        .parallax3DTilt(maxAngle: 7)
     }
 }
 
@@ -492,20 +550,49 @@ struct NewProjectBento: View {
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
-        VStack(spacing: 16) {
-            Text("NO ACTIVE PROJECT")
-                .font(SparkTheme.Typography.micro)
-                .foregroundColor(.gray)
-            
-            Button("START NEW QUEST") {
-                let p = CBLProject(title: "Future of Mars")
-                p.generateDefaultSteps()
-                modelContext.insert(p)
+        Button(action: {
+            HapticManager.shared.triggerSelection()
+            let p = CBLProject(title: "Future of Mars")
+            p.generateDefaultSteps()
+            modelContext.insert(p)
+        }) {
+            GlassCard {
+                ZStack {
+                    // Decorative background grid
+                    NeuralCircuitBackground(color: .gray, opacity: 0.07)
+                    
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack(alignment: .top) {
+                            ZStack {
+                                Spark3DOrb(size: 48, color: .gray)
+                                Image(systemName: "plus")
+                                    .font(.system(size: 16, weight: .bold))
+                                    .foregroundColor(.white)
+                            }
+                            .frame(width: 48, height: 48)
+                            Spacer()
+                        }
+                        
+                        Spacer(minLength: 8)
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Start New Quest")
+                                .font(.system(size: 18, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                            
+                            Text("NO ACTIVE PROJECT")
+                                .font(SparkTheme.Typography.micro)
+                                .foregroundColor(.gray)
+                                .tracking(1)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.blue)
         }
-        .bentoStyle()
+        .buttonStyle(.plain)
+        .frame(height: 160)
+        .parallax3DTilt(maxAngle: 7)
     }
 }
 
@@ -519,8 +606,12 @@ struct IdeaSparkBox: View {
         GlassCard() {
             VStack(alignment: .leading, spacing: 16) {
                 HStack {
-                    Image(systemName: "sparkles")
-                        .foregroundColor(SparkTheme.Colors.xpElectric)
+                    ZStack {
+                        FloatingParticlesBurst(color: SparkTheme.Colors.xpElectric, radius: 18, particleCount: 6)
+                            .frame(width: 36, height: 36)
+                        Image(systemName: "sparkles")
+                            .foregroundColor(SparkTheme.Colors.xpElectric)
+                    }
                     Text("IDEA SPARK")
                         .font(SparkTheme.Typography.micro)
                         .foregroundColor(.white.opacity(0.6))

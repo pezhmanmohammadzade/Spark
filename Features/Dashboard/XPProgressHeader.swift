@@ -10,8 +10,10 @@ public struct XPProgressHeader: View {
     
     public var body: some View {
         HStack(spacing: 16) {
-            // Level Badge
+            // Level Badge with pulsing rings
             ZStack {
+                PulsingRingView(color: SparkTheme.Colors.levelGold, baseSize: 50)
+                
                 Circle()
                     .fill(LinearGradient(colors: [SparkTheme.Colors.levelGold, .orange], startPoint: .top, endPoint: .bottom))
                     .frame(width: 50, height: 50)

@@ -3,10 +3,12 @@ import SwiftData
 
 public struct HistoryView: View {
     @Query(sort: \CBLProject.createdAt, order: .reverse) private var projects: [CBLProject]
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
     @State private var briefingProject: CBLProject?
     @State private var navigatedProject: CBLProject?
+    @State private var showClearHistoryAlert = false
     
     public init() {}
     
@@ -44,9 +46,22 @@ public struct HistoryView: View {
                         
                         Spacer()
                         
-                        Text("\(projects.count) ITEMS")
-                            .font(SparkTheme.Typography.micro)
-                            .foregroundColor(SparkTheme.Colors.xpElectric)
+                        if !projects.isEmpty {
+                            Button(action: { 
+                                HapticManager.shared.triggerSelection()
+                                showClearHistoryAlert = true 
+                            }) {
+                                Image(systemName: "trash")
+                                    .font(.system(size: 16, weight: .bold))
+                                    .foregroundColor(.red.opacity(0.8))
+                                    .padding(8)
+                                    .background(Circle().fill(Color.red.opacity(0.1)))
+                            }
+                        } else {
+                            Text("0 ITEMS")
+                                .font(SparkTheme.Typography.micro)
+                                .foregroundColor(SparkTheme.Colors.xpElectric)
+                        }
                     }
                     .padding(.horizontal, 24)
                     .padding(.top, 20)
@@ -63,21 +78,23 @@ public struct HistoryView: View {
                         }
                         .frame(maxHeight: .infinity)
                     } else {
-                        ScrollView(showsIndicators: false) {
-                            LazyVStack(spacing: 16) {
-                                ForEach(projects) { project in
-                                    Button(action: {
-                                        HapticManager.shared.triggerSelection()
-                                        briefingProject = project
-                                    }) {
-                                        HistoryItemCard(project: project)
-                                    }
-                                    .buttonStyle(.plain)
+                        List {
+                            ForEach(projects) { project in
+                                Button(action: {
+                                    HapticManager.shared.triggerSelection()
+                                    briefingProject = project
+                                }) {
+                                    HistoryItemCard(project: project)
                                 }
+                                .buttonStyle(.plain)
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(EdgeInsets(top: 8, leading: 24, bottom: 8, trailing: 24))
                             }
-                            .padding(.horizontal, 24)
-                            .padding(.bottom, 40)
+                            .onDelete(perform: deleteItems)
                         }
+                        .listStyle(.plain)
+                        .scrollContentBackground(.hidden)
                     }
                 }
             }
@@ -93,6 +110,28 @@ public struct HistoryView: View {
             .navigationDestination(item: $navigatedProject) { project in
                 PhaseGateNavigation(project: project)
             }
+            .alert("Clear Mission Logs?", isPresented: $showClearHistoryAlert) {
+                Button("Cancel", role: .cancel) { }
+                Button("Clear All", role: .destructive) {
+                    clearAllHistory()
+                }
+            } message: {
+                Text("This will permanently delete your entire mission history. This action cannot be reversed.")
+            }
+        }
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+        HapticManager.shared.triggerSelection()
+        for index in offsets {
+            modelContext.delete(projects[index])
+        }
+    }
+    
+    private func clearAllHistory() {
+        HapticManager.shared.triggerSuccess()
+        for project in projects {
+            modelContext.delete(project)
         }
     }
 }

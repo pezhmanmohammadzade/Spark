@@ -21,10 +21,17 @@ public struct MissionBriefingView: View {
                 VStack(spacing: 30) {
                     // Mission Header
                     VStack(spacing: 12) {
-                        Image(systemName: "bolt.ring.closed")
-                            .font(.system(size: 60))
-                            .foregroundColor(SparkTheme.Colors.xpElectric)
-                            .symbolEffect(.pulse)
+                        // 3D Hero Orb with orbiting particles
+                        ZStack {
+                            FloatingParticlesBurst(
+                                color: SparkTheme.Colors.xpElectric,
+                                radius: 44,
+                                particleCount: 10
+                            )
+                            .frame(width: 120, height: 120)
+                            
+                            Spark3DOrb(size: 90, color: SparkTheme.Colors.xpElectric)
+                        }
                         
                         Text("MISSION_BRIEFING")
                             .font(SparkTheme.Typography.micro)
