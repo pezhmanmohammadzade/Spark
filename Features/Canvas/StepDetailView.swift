@@ -12,6 +12,7 @@ public struct StepDetailView: View {
     @State private var showingFeedback = false
     @State private var currentScore: Double = 0.0
     @State private var currentFeedback = StepFeedback()
+    @State private var showConsentSheet: Bool = false
     
     public init(step: CBLStep) {
         self.step = step
@@ -50,6 +51,16 @@ public struct StepDetailView: View {
         }
         .onTapGesture {
             hideKeyboard()
+        }
+        .sheet(isPresented: $showConsentSheet) {
+            AIConsentView(
+                onContinue: {
+                    triggerEvaluation()
+                },
+                onCancel: {
+                    // Do nothing
+                }
+            )
         }
         .navigationBarBackButtonHidden()
     }
@@ -305,6 +316,11 @@ public struct StepDetailView: View {
     }
     
     private func triggerEvaluation() {
+        if !AIConsentManager.shared.hasGrantedConsent {
+            showConsentSheet = true
+            return
+        }
+        
         isAnalyzing = true
         let previous = step.content.isEmpty ? nil : step.content
         Task {

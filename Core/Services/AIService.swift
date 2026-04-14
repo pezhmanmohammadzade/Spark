@@ -1,8 +1,9 @@
 import Foundation
 import SwiftData
 
+@MainActor
 public final class AIService: Sendable {
-    @MainActor public static let shared = AIService()
+    public static let shared = AIService()
     
     private let sparkQuotes = [
         "● COGNITIVE FRICTION DETECTED. ANALYZING...",
@@ -25,6 +26,11 @@ public final class AIService: Sendable {
     
     // Internal generic method for making calls to Groq API
     private func fetchGroqCompletion(prompt: String, systemPrompt: String = "You are SPARK, an elite AI coach specialized in Challenge-Based Learning (CBL) and product strategy. You are highly analytical, somewhat provocative, and focus on demanding intellectual depth. Be concise.") async throws -> String {
+        // Safety check for consent
+        guard AIConsentManager.shared.hasGrantedConsent else {
+            throw URLError(.userAuthenticationRequired)
+        }
+        
         guard let url = URL(string: groqAPIEndpoint) else {
             throw URLError(.badURL)
         }

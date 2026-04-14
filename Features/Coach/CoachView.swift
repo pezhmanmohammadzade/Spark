@@ -4,6 +4,7 @@ public struct CoachView: View {
     @State private var inputPrompt: String = ""
     @State private var messages: [ChatMessage] = []
     @State private var isTyping: Bool = false
+    @State private var showConsentSheet: Bool = false
     @Environment(\.dismiss) private var dismiss
     
     struct ChatMessage: Identifiable {
@@ -53,7 +54,17 @@ public struct CoachView: View {
                     Spacer()
                     
                     // placeholder for balance
-                    Image(systemName: "chevron.left").opacity(0)
+                    Button(action: {
+                        if let url = URL(string: "https://tabby-hammer-a8f.notion.site/spark-ai-policy-342778c3ecb980baa53dcbfb8eb711cd?pvs=73") {
+                            UIApplication.shared.open(url)
+                        }
+                    }) {
+                        Text("PRIVACY")
+                            .font(.system(size: 8, weight: .bold, design: .monospaced))
+                            .foregroundColor(.white.opacity(0.3))
+                            .padding(6)
+                            .background(RoundedRectangle(cornerRadius: 4).stroke(Color.white.opacity(0.1), lineWidth: 0.5))
+                    }
                 }
                 .padding(.horizontal, 24)
                 .padding(.top, 20)
@@ -129,6 +140,16 @@ public struct CoachView: View {
                 .background(.ultraThinMaterial)
             }
         }
+        .sheet(isPresented: $showConsentSheet) {
+            AIConsentView(
+                onContinue: {
+                    sendMessage()
+                },
+                onCancel: {
+                    // Do nothing
+                }
+            )
+        }
         .navigationBarHidden(true)
         .onAppear {
             if messages.isEmpty {
@@ -139,6 +160,12 @@ public struct CoachView: View {
     
     private func sendMessage() {
         guard !inputPrompt.isEmpty else { return }
+        
+        if !AIConsentManager.shared.hasGrantedConsent {
+            showConsentSheet = true
+            return
+        }
+        
         let userMsg = inputPrompt
         inputPrompt = ""
         

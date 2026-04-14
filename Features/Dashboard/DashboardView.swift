@@ -600,6 +600,7 @@ struct IdeaSparkBox: View {
     @Environment(\.modelContext) private var modelContext
     @State private var rawIdea: String = ""
     @State private var isSparking: Bool = false
+    @State private var showConsentSheet: Bool = false
     var onSpark: (CBLProject) -> Void
     
     var body: some View {
@@ -650,9 +651,24 @@ struct IdeaSparkBox: View {
                 .disabled(rawIdea.isEmpty || isSparking)
             }
         }
+        .sheet(isPresented: $showConsentSheet) {
+            AIConsentView(
+                onContinue: {
+                    sparkMission()
+                },
+                onCancel: {
+                    // Do nothing
+                }
+            )
+        }
     }
     
     private func sparkMission() {
+        if !AIConsentManager.shared.hasGrantedConsent {
+            showConsentSheet = true
+            return
+        }
+        
         isSparking = true
         HapticManager.shared.triggerImpact(1)
         

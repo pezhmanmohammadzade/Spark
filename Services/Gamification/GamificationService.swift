@@ -29,7 +29,7 @@ public final class GamificationService: Sendable {
         let today = Date()
         
         // Simple logic for checking if we should reset or increment streak
-        if let last = stats.lastActiveDate {
+        if let last = stats.lastActivityDate {
             if calendar.isDateInToday(last) {
                 // Already active today
                 return
@@ -43,7 +43,7 @@ public final class GamificationService: Sendable {
             stats.dailyStreak = 1
         }
         
-        stats.lastActiveDate = today
+        stats.lastActivityDate = today
         try? modelContext?.save()
     }
 }

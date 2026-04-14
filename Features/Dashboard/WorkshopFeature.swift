@@ -258,6 +258,7 @@ public struct WorkshopPortalView: View {
     @State private var feedback: String = ""
     @State private var showSuccess: Bool = false
     @State private var isError: Bool = false
+    @State private var showConsentSheet: Bool = false
     
     public init(workshop: Workshop) {
         self.workshop = workshop
@@ -295,6 +296,16 @@ public struct WorkshopPortalView: View {
                     finalizeCompletion()
                 }
             }
+        }
+        .sheet(isPresented: $showConsentSheet) {
+            AIConsentView(
+                onContinue: {
+                    triggerAnalysis()
+                },
+                onCancel: {
+                    // Do nothing
+                }
+            )
         }
     }
     
@@ -528,6 +539,11 @@ public struct WorkshopPortalView: View {
     }
     
     private func triggerAnalysis() {
+        if !AIConsentManager.shared.hasGrantedConsent {
+            showConsentSheet = true
+            return
+        }
+        
         isAnalyzing = true
         Task {
             let result = await AIService.shared.validateWorkshopResponse(
