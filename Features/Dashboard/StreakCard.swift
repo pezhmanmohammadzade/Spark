@@ -3,10 +3,15 @@ import SwiftData
 
 public struct StreakCard: View {
     public let streak: Int
+    public let multiplier: Double
+    public let shields: Int
+    
     @State private var pulse = false
     
-    public init(streak: Int) {
+    public init(streak: Int, multiplier: Double = 1.0, shields: Int = 0) {
         self.streak = streak
+        self.multiplier = multiplier
+        self.shields = shields
     }
     
     public var body: some View {
@@ -37,13 +42,26 @@ public struct StreakCard: View {
                     
                     Spacer()
                     
-                    Text(streakLabel)
-                        .font(.system(size: 10, weight: .bold, design: .rounded))
-                        .foregroundColor((streak > 0 ? SparkTheme.Colors.streakFlame : Color.gray).opacity(0.9))
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background((streak > 0 ? SparkTheme.Colors.streakFlame : Color.gray).opacity(0.2))
-                        .cornerRadius(8)
+                    VStack(alignment: .trailing, spacing: 4) {
+                        Text(streakLabel)
+                            .font(.system(size: 10, weight: .bold, design: .rounded))
+                            .foregroundColor((streak > 0 ? SparkTheme.Colors.streakFlame : Color.gray).opacity(0.9))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background((streak > 0 ? SparkTheme.Colors.streakFlame : Color.gray).opacity(0.2))
+                            .cornerRadius(8)
+                        
+                        // Streak Multiplier Badge
+                        if multiplier > 1.0 {
+                            Text("x\(String(format: "%.1f", multiplier))")
+                                .font(.system(size: 10, weight: .black, design: .rounded))
+                                .foregroundColor(SparkTheme.Colors.xpElectric)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 3)
+                                .background(SparkTheme.Colors.xpElectric.opacity(0.2))
+                                .cornerRadius(6)
+                        }
+                    }
                 }
                 
                 Spacer(minLength: 8)
@@ -55,11 +73,27 @@ public struct StreakCard: View {
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                     
-                    HStack(spacing: 4) {
+                    HStack(spacing: 6) {
                         Text("DAY STREAK")
                             .font(SparkTheme.Typography.micro)
                             .foregroundColor(.white.opacity(0.6))
                             .tracking(1)
+                        
+                        // Neural Shield indicator
+                        if shields > 0 {
+                            HStack(spacing: 3) {
+                                Image(systemName: "shield.checkered")
+                                    .font(.system(size: 9, weight: .bold))
+                                Text("\(shields)")
+                                    .font(.system(size: 9, weight: .black, design: .rounded))
+                            }
+                            .foregroundColor(SparkTheme.Colors.shieldBlue)
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, 2)
+                            .background(SparkTheme.Colors.shieldBlue.opacity(0.15))
+                            .cornerRadius(4)
+                            .scaleEffect(pulse ? 1.05 : 1.0)
+                        }
                     }
                 }
             }
@@ -77,6 +111,8 @@ public struct StreakCard: View {
         if streak == 0 { return "COLD" }
         if streak < 3 { return "WARM" }
         if streak < 7 { return "HOT" }
-        return "NOVA"
+        if streak < 14 { return "NOVA" }
+        if streak < 30 { return "SUPERNOVA" }
+        return "ETERNAL"
     }
 }

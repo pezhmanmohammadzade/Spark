@@ -16,6 +16,12 @@ public enum SparkTheme {
         public static let engage = Color(hue: 0.6, saturation: 0.8, brightness: 1.0)
         public static let investigate = Color(hue: 0.8, saturation: 0.7, brightness: 1.0)
         public static let act = Color(hue: 0.15, saturation: 0.9, brightness: 1.0)
+        
+        // Reactive UI Colors (Score-based)
+        public static let criticalHit = Color(hue: 0.12, saturation: 1.0, brightness: 1.0)
+        public static let shieldBlue = Color(hue: 0.58, saturation: 0.7, brightness: 0.95)
+        public static let neuralGreen = Color(hue: 0.38, saturation: 0.85, brightness: 0.9)
+        public static let harshFail = Color(hue: 0.02, saturation: 0.9, brightness: 0.95)
     }
     
     public enum Typography {

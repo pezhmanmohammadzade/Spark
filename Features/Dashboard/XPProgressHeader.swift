@@ -30,9 +30,27 @@ public struct XPProgressHeader: View {
                         .font(SparkTheme.Typography.cardHeader)
                         .foregroundColor(.white)
                     Spacer()
-                    Text("\(stats.currentXP) / \(max(1, stats.xpForNextLevel)) XP")
-                        .font(SparkTheme.Typography.micro)
-                        .foregroundColor(.white.opacity(0.6))
+                    
+                    HStack(spacing: 4) {
+                        // Streak Multiplier Badge
+                        if stats.streakMultiplier > 1.0 {
+                            HStack(spacing: 2) {
+                                Image(systemName: "bolt.fill")
+                                    .font(.system(size: 8))
+                                Text("x\(String(format: "%.1f", stats.streakMultiplier))")
+                                    .font(.system(size: 9, weight: .black, design: .rounded))
+                            }
+                            .foregroundColor(SparkTheme.Colors.xpElectric)
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, 2)
+                            .background(SparkTheme.Colors.xpElectric.opacity(0.15))
+                            .cornerRadius(4)
+                        }
+                        
+                        Text("\(stats.currentXP) / \(max(1, stats.xpForNextLevel)) XP")
+                            .font(SparkTheme.Typography.micro)
+                            .foregroundColor(.white.opacity(0.6))
+                    }
                 }
                 
                 // Liquid XP Bar

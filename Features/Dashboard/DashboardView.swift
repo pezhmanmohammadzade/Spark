@@ -30,6 +30,7 @@ public struct DashboardView: View {
     @State private var showHistory = false
     @State private var showTimeline = false
     @State private var showCoach = false
+    @State private var showArmory = false
     
     private var totalInsights: Int {
         projects.flatMap { $0.steps }.filter { !$0.aiInsight.isEmpty }.count
@@ -81,6 +82,11 @@ public struct DashboardView: View {
                                         
                                         // Action Indicators
                                         HStack(spacing: 12) {
+                                            HeaderActionButton(icon: "trophy.fill", color: SparkTheme.Colors.levelGold) {
+                                                HapticManager.shared.triggerSelection()
+                                                showArmory = true
+                                            }
+                                            
                                             HeaderActionButton(icon: "chart.xyaxis.line", color: .blue) {
                                                 HapticManager.shared.triggerSelection()
                                                 showTimeline = true
@@ -140,7 +146,7 @@ public struct DashboardView: View {
                                         NewProjectBento()
                                     }
                                     
-                                    StreakCard(streak: currentUserStats.dailyStreak)
+                                    StreakCard(streak: currentUserStats.dailyStreak, multiplier: currentUserStats.streakMultiplier, shields: currentUserStats.neuralShields)
                                     
                                     AdvancedStatCard(
                                         title: "Insights",
@@ -194,6 +200,9 @@ public struct DashboardView: View {
             }
             .fullScreenCover(isPresented: $showCoach) {
                 CoachView()
+            }
+            .fullScreenCover(isPresented: $showArmory) {
+                TrophyArmoryView()
             }
             .navigationDestination(item: $navigatedProject) { (p: CBLProject) in
                 PhaseGateNavigation(project: p)
