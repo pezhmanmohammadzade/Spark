@@ -36,6 +36,18 @@ end
   add_files_recursively(main_group, folder, target)
 end
 
+# Add SharedWidgetData.swift to main app target as well (shared bridge file)
+shared_widget_data_path = 'SparkWidget/SharedWidgetData.swift'
+if File.exist?(shared_widget_data_path)
+  file_dir = File.dirname(shared_widget_data_path)
+  shared_group = main_group.find_subpath(file_dir, true)
+  existing = shared_group.files.find { |f| f.path == shared_widget_data_path }
+  unless existing
+    shared_ref = shared_group.new_file(shared_widget_data_path)
+    target.source_build_phase.add_file_reference(shared_ref)
+  end
+end
+
 # Add resources (Assets, Storyboards)
 ['Resources/**/*.xcassets', 'Resources/**/*.storyboard'].each do |pattern|
   Dir.glob(pattern).each do |asset_path|
@@ -52,7 +64,7 @@ target.build_configurations.each do |config|
   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
   config.build_settings['SWIFT_VERSION'] = '6.0'
   config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.spark.app.concept'
-  config.build_settings['MARKETING_VERSION'] = '1.0'
+  config.build_settings['MARKETING_VERSION'] = '1.2'
   config.build_settings['CURRENT_PROJECT_VERSION'] = '1'
   
   # MODERN PLISTS: Disable old Info.plist checking
@@ -81,8 +93,66 @@ target.build_configurations.each do |config|
   config.build_settings['CODE_SIGNING_ALLOWED'] = "YES"
 end
 
+# ============================================================
+# WIDGET EXTENSION TARGET
+# ============================================================
+
+widget_target = project.new_target(:app_extension, 'SparkWidgetExtension', :ios, '17.0')
+
+# Create widget group
+widget_group = main_group.find_subpath('SparkWidget', true)
+
+# Add widget Swift files to widget target
+Dir.glob('SparkWidget/**/*.swift').each do |file_path|
+  file_dir = File.dirname(file_path)
+  group = main_group.find_subpath(file_dir, true)
+  
+  # Reuse existing file reference if already in the group (e.g. SharedWidgetData added to main app),
+  # otherwise create a new one
+  file_ref = group.files.find { |f| f.path == file_path }
+  unless file_ref
+    file_ref = group.new_file(file_path)
+  end
+  widget_target.source_build_phase.add_file_reference(file_ref)
+end
+
+# Widget Build Settings
+widget_target.build_configurations.each do |config|
+  config.build_settings['SDKROOT'] = 'iphoneos'
+  config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
+  config.build_settings['SWIFT_VERSION'] = '6.0'
+  config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.spark.app.concept.widget'
+  config.build_settings['MARKETING_VERSION'] = '1.2'
+  config.build_settings['CURRENT_PROJECT_VERSION'] = '1'
+  config.build_settings['GENERATE_INFOPLIST_FILE'] = 'YES'
+  config.build_settings['INFOPLIST_FILE'] = 'SparkWidget/Info.plist'
+  
+  # Widget-specific Info.plist keys
+  config.build_settings['INFOPLIST_KEY_CFBundleDisplayName'] = 'Spark Widgets'
+  
+  # SIGNING
+  config.build_settings['CODE_SIGN_STYLE'] = 'Automatic'
+  config.build_settings['DEVELOPMENT_TEAM'] = "PH7ZFXKNZC"
+  config.build_settings['CODE_SIGN_IDENTITY'] = "Apple Development"
+  config.build_settings['CODE_SIGNING_REQUIRED'] = "YES"
+  config.build_settings['CODE_SIGNING_ALLOWED'] = "YES"
+  
+  # LD flags to suppress warnings
+  config.build_settings['LD_RUNPATH_SEARCH_PATHS'] = '$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks'
+  config.build_settings['SKIP_INSTALL'] = 'YES'
+end
+
+# Embed widget extension in main app
+embed_phase = target.new_copy_files_build_phase('Embed App Extensions')
+embed_phase.dst_subfolder_spec = '13' # PlugIns
+embed_phase.add_file_reference(widget_target.product_reference)
+
+# Add dependency so widget builds with the app
+target.add_dependency(widget_target)
+
 # Recreate schemes to ensure the new target is launchable
 project.recreate_user_schemes
 
 project.save
-puts "Successfully regenerated #{project_path} with flat Absolute Paths."
+puts "Successfully regenerated #{project_path} with Widget Extension target."
+

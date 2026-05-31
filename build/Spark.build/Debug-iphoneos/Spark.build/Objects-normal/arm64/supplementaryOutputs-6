@@ -1,0 +1,30 @@
+{
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Data/Models/Workshop.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Workshop.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Workshop.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Workshop.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Workshop.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Workshop.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Features/Canvas/MissionBriefingView.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/MissionBriefingView.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/MissionBriefingView.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/MissionBriefingView.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/MissionBriefingView.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/MissionBriefingView.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Features/Canvas/StepDetailView.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepDetailView.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepDetailView.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepDetailView.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepDetailView.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepDetailView.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Features/Gamification/TrophyArmoryView.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/TrophyArmoryView.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/TrophyArmoryView.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/TrophyArmoryView.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/TrophyArmoryView.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/TrophyArmoryView.swiftdeps"
+  }
+}

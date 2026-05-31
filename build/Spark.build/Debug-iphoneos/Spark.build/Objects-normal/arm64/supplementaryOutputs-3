@@ -1,0 +1,30 @@
+{
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Core/DesignSystem/AdvancedStatCard.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AdvancedStatCard.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AdvancedStatCard.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AdvancedStatCard.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AdvancedStatCard.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AdvancedStatCard.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Core/DesignSystem/SparkBackground.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SparkBackground.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SparkBackground.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SparkBackground.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SparkBackground.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SparkBackground.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Core/DesignSystem/Theme.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Theme.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Theme.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Theme.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Theme.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/Theme.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Core/Models/StepFeedback.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepFeedback.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepFeedback.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepFeedback.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepFeedback.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/StepFeedback.swiftdeps"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Features/Dashboard/HistoryView.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/HistoryView.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/HistoryView.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/HistoryView.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/HistoryView.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/HistoryView.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Features/Dashboard/NexusTerminal.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/NexusTerminal.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/NexusTerminal.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/NexusTerminal.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/NexusTerminal.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/NexusTerminal.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Features/Dashboard/WorkshopFeature.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/WorkshopFeature.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/WorkshopFeature.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/WorkshopFeature.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/WorkshopFeature.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/WorkshopFeature.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Features/Dashboard/XPProgressHeader.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/XPProgressHeader.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/XPProgressHeader.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/XPProgressHeader.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/XPProgressHeader.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/XPProgressHeader.swiftdeps"
+  }
+}

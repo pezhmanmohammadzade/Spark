@@ -1,0 +1,23 @@
+{
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Services/Evolution/EvolutionService.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/EvolutionService.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/EvolutionService.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/EvolutionService.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/EvolutionService.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/EvolutionService.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/SparkWidget/SharedWidgetData.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SharedWidgetData.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SharedWidgetData.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SharedWidgetData.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SharedWidgetData.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SharedWidgetData.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps"
+  }
+}

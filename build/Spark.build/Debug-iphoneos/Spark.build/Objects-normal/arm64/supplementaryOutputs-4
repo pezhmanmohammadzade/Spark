@@ -1,0 +1,30 @@
+{
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Core/Services/AIConsentManager.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIConsentManager.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIConsentManager.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIConsentManager.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIConsentManager.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIConsentManager.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Core/Services/AIService.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIService.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIService.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIService.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIService.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/AIService.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Core/Services/CBLGuideService.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/CBLGuideService.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/CBLGuideService.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/CBLGuideService.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/CBLGuideService.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/CBLGuideService.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/Data/Repositories/SeedDataProvider.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SeedDataProvider.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SeedDataProvider.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SeedDataProvider.dia",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SeedDataProvider.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/Spark.build/Objects-normal/arm64/SeedDataProvider.swiftdeps"
+  }
+}

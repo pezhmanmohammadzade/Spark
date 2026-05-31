@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<true/>
 		</dict>
+		<key>SparkWidgetExtension.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict/>

@@ -1,0 +1,29 @@
+{
+  "" : {
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidgetExtension-primary.dia",
+    "emit-module-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidgetExtension-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidgetExtension-primary-emit-module.dia",
+    "pch" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidgetExtension-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidgetExtension-primary.swiftdeps"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/SparkWidget/SharedWidgetData.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SharedWidgetData.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SharedWidgetData.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SharedWidgetData.dia",
+    "index-unit-output-path" : "/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SharedWidgetData.o",
+    "llvm-bc" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SharedWidgetData.bc",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SharedWidgetData.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SharedWidgetData.swiftdeps",
+    "swiftmodule" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SharedWidgetData~partial.swiftmodule"
+  },
+  "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/SparkWidget/SparkWidget.swift" : {
+    "const-values" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidget.swiftconstvalues",
+    "dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidget.d",
+    "diagnostics" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidget.dia",
+    "index-unit-output-path" : "/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidget.o",
+    "llvm-bc" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidget.bc",
+    "object" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidget.o",
+    "swift-dependencies" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidget.swiftdeps",
+    "swiftmodule" : "/Users/pezhmanmohammadzadehkordestani/Desktop/Spark/build/Spark.build/Debug-iphoneos/SparkWidgetExtension.build/Objects-normal/arm64/SparkWidget~partial.swiftmodule"
+  }
+}

@@ -1,0 +1,4 @@
+Target dependency graph (2 targets)
+Target 'Spark' in project 'Spark'
+➜ Explicit dependency on target 'SparkWidgetExtension' in project 'Spark'
+Target 'SparkWidgetExtension' in project 'Spark' (no dependencies)
